@@ -48,8 +48,14 @@
 ;; Describe key
 (global-set-key (kbd "C-\\")      'describe-key)
 ;; Escape C-g
-; (global-set-key (kbd "<ESC>")      'keyboard-escape-quit)
+;; (global-set-key (kbd "<ESC>")      'keyboard-escape-quit)
 ;; (global-set-key (kbd "<ESC>"      'keyboard-quit))
+;; (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
 ;; Make case insensitive search
 (setq case-fold-search t)
@@ -159,10 +165,9 @@ Version 2020-06-26"
 (use-package which-key
   :ensure t
   :config
-  (which-key-mode)
   ;; (setq which-key-show-early-on-C-h t)
-  (global-set-key (kbd "<f1>") 'which-key))
-
+  ;; (global-set-key (kbd "<C-f1>") #'which-key)
+  (which-key-mode))
 
 ;; Helm
 (use-package helm
@@ -182,6 +187,7 @@ Version 2020-06-26"
         helm-mode-fuzzy-match t
         helm-apropos-fuzzy-match t
         helm-move-to-line-cycle-in-source nil)
+  (define-key helm-map [escape] 'keyboard-escape-quit)
   (use-package helm-command
     :config
     ;;(global-set-key (kbd "C-SPC") 'helm-M-x))
@@ -234,6 +240,7 @@ Version 2020-06-26"
   ;; (setq helm-swoop-use-fuzzy-match nil)
   (define-key helm-swoop-map (kbd "<backtab>") 'helm-previous-line)
   (define-key helm-swoop-map (kbd "<tab>") 'helm-next-line)
+  ; (define-key helm-swoop-map [escape] 'keyboard-escape-quit)
   (global-set-key (kbd "C-f") 'helm-swoop)
   ;; (bind-key "C-f" 'helm-swoop)
   (global-set-key (kbd "<f3>") 'helm-swoop-back-to-last-point))
@@ -275,7 +282,7 @@ Version 2020-06-26"
   (setq dired-sidebar-theme 'vscode)
   (setq dired-sidebar-use-term-integration t)
   (setq dired-sidebar-use-custom-font t))
-(bind-key "<C-f1>" 'dired-sidebar-toggle-sidebar)
+(bind-key [f1] 'dired-sidebar-toggle-sidebar)
 ;; TODO No funciona desactivar Mark Set
                                         ;(global-unset-key (kbd "M-s"))
                                         ;(global-set-key (kbd "M-s") 'dired-sidebar-toggle-sidebar)
@@ -550,6 +557,7 @@ Version 2020-06-26"
   (global-company-mode)
   (define-key company-active-map (kbd "<return>") nil)
   (define-key company-active-map (kbd "RET") nil)
+  (define-key company-active-map [escape] 'company-abort)
   (define-key company-active-map (kbd "<tab>") 'company-complete-selection)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
@@ -562,7 +570,6 @@ Version 2020-06-26"
 (use-package company-quickhelp :ensure t)
 (company-quickhelp-mode)
 
-
 ;; ; Ripgrep.rg
 ;; (use-package rg
 ;;   :ensure t
@@ -574,12 +581,6 @@ Version 2020-06-26"
 ;;   ;; (rg-enable-menu))
 ;;   (rg-enable-default-bindings))
 ;; ;; (global-set-key (kbd "C-S-f") 'rgrep)
-
-;;  Deadgrep
-(use-package deadgrep
-  :ensure t
-  :bind ("C-S-f" . deadgrep))
-
 
 ;;; Indentation and trailing whitespace
 (setq-default indent-tabs-mode nil)
@@ -682,6 +683,7 @@ Version 2020-06-26"
      ("\\?\\?\\?+" . "#dc752f")))
  '(ibuffer-deletion-face 'diredp-deletion-file-name)
  '(ibuffer-marked-face 'diredp-flag-mark)
+ '(imenu-list-minor-mode nil)
  '(inhibit-startup-screen t)
  '(linum-format " %5i ")
  '(lsp-ui-doc-border "#024858")
@@ -707,6 +709,7 @@ Version 2020-06-26"
  '(powerline-color2 "#111111")
  '(red "#ffffff")
  '(show-paren-mode t)
+ '(size-indication-mode t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#8ac6f2" "#0b0b0b" 0.2))
  '(term-default-bg-color "#000000")
  '(term-default-fg-color "#7c7c7c")
@@ -750,6 +753,7 @@ Version 2020-06-26"
        (not
         (facep
          (aref ansi-term-color-vector 0)))))
+ '(which-key-mode t)
  '(xterm-color-names
    ["#414E63" "#CC71D1" "#88D6CB" "#C79474" "#76A2D1" "#4A4B6B" "#96A9D6" "#8E95A3"])
  '(xterm-color-names-bright
@@ -771,6 +775,9 @@ Version 2020-06-26"
   :bind ("C-x g" . magit-status))
 ;; (setq magit-git-executable "git"))
 (bind-key "<f9>" 'magit)
+
+;; Evita problemas en git con links symbolic
+(setq vc-follow-symlinks t)
 
 ;; Auto revert archivo cambiado en disco
 (global-auto-revert-mode 1)
@@ -1091,9 +1098,9 @@ Version 2020-06-26"
 
 
 ;; Remember theme
-(use-package remember-last-theme
-  :ensure t
-  :config (remember-last-theme-enable))
+;; (use-package remember-last-theme
+  ;; :ensure t
+  ;; :config (remember-last-theme-enable))
 ;; (load custom-file) if you are not doing it already)
 
 ;; (load-theme 'monokai t)
@@ -1271,12 +1278,13 @@ Version 2020-06-26"
                        (setf dbu:*db-cache-dir* nil)" system-file))
             ("Start DS" .
              ,(format "(progn (load \"%s\")(excl:clean-system :mis.dataset-server) (excl:load-system :mis.dataset-server :compile t) )" system-file))
-            ("Launch DSS API" . "(progn (dss::start-application :dataset-server-gen4 :port 9091 :load-resources nil :log-to-slack-p nil :environment :default :variant :Default :force-p t) (setf dss::*skip-analytics-check* t))")))))
-(clede-start)
-(semantic-mode)
-(bind-key "<f12>" 'imenu-list)
-
-;; (global-set-key (kbd "<f12>") 'imenu-list)
+            ("Launch DSS API" . "(progn (dss::start-application :dataset-server-gen4 :port 9091 :load-resources nil :log-to-slack-p nil :environment :default :variant :Default :force-p t) (setf dss::*skip-analytics-check* t))"))))
+  :config
+  ;; (define-key clede-minor-mode-map [escape] 'imenu-list-quit-window)
+  ;; (define-key clede-minor-mode-map [escape] 'delete-window)
+  (clede-start)
+  (semantic-mode)
+  (bind-key [f12] 'imenu-list-minor-mode))
 
 
 ;; Tramp
