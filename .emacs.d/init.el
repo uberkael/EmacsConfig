@@ -14,7 +14,7 @@
 ;; Default coding
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
-(set-language-environment 'utf-8)
+;; (set-language-environment 'utf-8)
 (set-selection-coding-system 'utf-8)
 
 ;; Remove cl warnings
@@ -56,6 +56,13 @@
 (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+;; Open config
+(bind-key "M-." (lambda () (interactive) (find-file user-init-file)))
+(bind-key "M-," (lambda () (interactive) (find-file user-init-file)))
+;; Change definition navigaiton
+(bind-key "C-." 'xref-find-definitions)
+(bind-key "C-," 'xref-pop-marker-stack)
+
 
 ;; Make case insensitive search
 (setq case-fold-search t)
@@ -1276,6 +1283,15 @@ Version 2020-06-26"
                        (excl:load-system :mis.management-console :compile t)
                        (mc:start-application :management-console :environment :development :variant :gen5-only)
                        (setf dbu:*db-cache-dir* nil)" system-file))
+            ("Pretty Print" .
+             "slynk::(setf slynk::*slynk-pprint-bindings*
+                           `((*print-pretty*           . t)
+                             (*print-level*            . nil)
+                             (*print-length*           . nil)
+                             (*string-elision-length*  . nil)
+                             (*print-circle*           . nil)
+                             (*print-gensym*           . t)
+                             (*print-readably*         . nil)))")
             ("Start DS" .
              ,(format "(progn (load \"%s\")(excl:clean-system :mis.dataset-server) (excl:load-system :mis.dataset-server :compile t) )" system-file))
             ("Launch DSS API" . "(progn (dss::start-application :dataset-server-gen4 :port 9091 :load-resources nil :log-to-slack-p nil :environment :default :variant :Default :force-p t) (setf dss::*skip-analytics-check* t))"))))
