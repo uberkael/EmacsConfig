@@ -20,50 +20,6 @@
 ;; Remove cl warnings
 (setq byte-compile-warnings '(cl-functions))
 
-;; Shorcuts
-;; Comentarios
-(global-set-key (kbd "C-+")       'comment-line)
-;; Ventanas
-(global-set-key (kbd "M-!")       'split-window-right)
-(global-set-key (kbd "M-\"")      'delete-other-windows)
-(global-set-key (kbd "M-#")       'delete-window)
-(global-set-key (kbd "M-$")       'split-window-below)
-
-(global-set-key (kbd "C-!")       'split-window-right)
-(global-set-key (kbd "C-\"")      'delete-other-windows)
-(global-set-key (kbd "C-#")       'delete-window)
-(global-set-key (kbd "C-$")       'split-window-below)
-;; Cambio buffers
-(global-set-key (kbd "<mouse-8>") 'previous-buffer)
-(global-set-key (kbd "<mouse-9>") 'next-buffer)
-;; Movimiento
-(global-set-key (kbd "<M-up>")    'backward-paragraph)
-(global-set-key (kbd "<M-down>")  'forward-paragraph)
-;; Eval
-(global-set-key (kbd "<M-f5>")    'eval-buffer)
-;; Identacion
-(global-set-key (kbd "<backtab>") 'indent-region)
-;; Cerrar ventana
-(global-set-key (kbd "C-w")       'delete-window)
-;; Describe key
-(global-set-key (kbd "C-\\")      'describe-key)
-;; Escape C-g
-;; (global-set-key (kbd "<ESC>")      'keyboard-escape-quit)
-;; (global-set-key (kbd "<ESC>"      'keyboard-quit))
-;; (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
-(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-;; Open config
-(bind-key "M-." (lambda () (interactive) (find-file user-init-file)))
-(bind-key "M-," (lambda () (interactive) (find-file user-init-file)))
-;; Change definition navigaiton
-(bind-key "C-." 'xref-find-definitions)
-(bind-key "C-," 'xref-pop-marker-stack)
-
-
 ;; Make case insensitive search
 (setq case-fold-search t)
 
@@ -410,8 +366,12 @@ Version 2020-06-26"
 ;; Eval
 (global-set-key (kbd "<f8>")     'sly-eval-defun)
 (global-set-key (kbd "<S-f8>")   'sly-eval-region)
-(global-set-key (kbd "<M-f8>")   'sly-eval-describe)
+;; (global-set-key (kbd "<M-f8>")   'sly-eval-describe)
+(global-set-key (kbd "<M-f8>")   'sly-who-calls)
 (global-set-key (kbd "<C-f8>")   'sly-pprint-eval-last-expression)
+;; Describe Symbol
+(bind-key "C-." 'sly-describe-symbol)
+(bind-key "C-," 'sly-inspect)
 ;; (global-set-key (kbd "<C-f8>")   'sly-pprint-eval-region)
 
 ;; (global-set-key (kbd "M-<up>")    'isearch-backward)
@@ -588,6 +548,11 @@ Version 2020-06-26"
 ;;   ;; (rg-enable-menu))
 ;;   (rg-enable-default-bindings))
 ;; ;; (global-set-key (kbd "C-S-f") 'rgrep)
+
+(use-package deadgrep
+  :ensure t
+  :config
+  (global-set-key (kbd "C-S-f") #'deadgrep))
 
 ;;; Indentation and trailing whitespace
 (setq-default indent-tabs-mode nil)
@@ -1352,6 +1317,50 @@ Version 2020-06-26"
 ;; Font
 ;;(add-to-list 'default-frame-alist '(font . FONT ))
 ;;(set-face-attribute 'default t :font FONT )
+
+
+;; Shorcuts
+;; Comentarios
+(global-set-key (kbd "C-+")       'comment-line)
+;; Ventanas
+(global-set-key (kbd "M-!")       'split-window-right)
+(global-set-key (kbd "M-\"")      'delete-other-windows)
+(global-set-key (kbd "M-#")       'delete-window)
+(global-set-key (kbd "M-$")       'split-window-below)
+
+(global-set-key (kbd "C-!")       'split-window-right)
+(global-set-key (kbd "C-\"")      'delete-other-windows)
+(global-set-key (kbd "C-#")       'delete-window)
+(global-set-key (kbd "C-$")       'split-window-below)
+;; Cambio buffers
+(global-set-key (kbd "<mouse-8>") 'previous-buffer)
+(global-set-key (kbd "<mouse-9>") 'next-buffer)
+;; Movimiento
+(global-set-key (kbd "<M-up>")    'backward-paragraph)
+(global-set-key (kbd "<M-down>")  'forward-paragraph)
+;; Eval
+(global-set-key (kbd "<M-f5>")    'eval-buffer)
+;; Identacion
+(global-set-key (kbd "<backtab>") 'indent-region)
+;; Cerrar ventana
+(global-set-key (kbd "C-w")       'delete-window)
+;; Describe key
+(global-set-key (kbd "C-\\")      'describe-key)
+;; Escape C-g
+;; (global-set-key (kbd "<ESC>")      'keyboard-escape-quit)
+;; (global-set-key (kbd "<ESC>"      'keyboard-quit))
+;; (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+;; Open config
+(bind-key "C--" (lambda () (interactive) (find-file user-init-file)))
+;; Change definition navigation
+;; (bind-key "C-." 'xref-find-definitions)
+;; (bind-key "C-," 'xref-pop-marker-stack)
+
 
 ;; (set-face-attribute 'bold nil :font "Consolas Ligaturized" :height 160)
 ;; (set-frame-font "Consolas Ligaturized" nil t)
