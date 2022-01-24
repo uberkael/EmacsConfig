@@ -296,17 +296,26 @@ Version 2020-06-26"
 
 (with-eval-after-load 'sly
   (setq sly-lisp-implementations (cond ((string-equal system-type "gnu/linux")
-                                        '((allegro ("alisp"))
-                                          (sbcl    ("sbcl") :coding-system utf-8-unix)
-                                          (cmucl   ("cmucl") :coding-system utf-8-unix)
-                                          (clozure ("ccl") :coding-system utf-8-unix)
-                                          (clisp   ("clisp") :coding-system utf-8-unix)
-                                          (ecl     ("ecl") :coding-system utf-8-unix)
-                                          (abcl    ("abcl"))))
+                                        '((allegro ("alisp")
+                                                   :coding-system utf-8-unix)
+                                          (sbcl    ("sbcl")
+                                                   :coding-system utf-8-unix)
+                                          (cmucl   ("cmucl")
+                                                   :coding-system utf-8-unix)
+                                          (clozure ("ccl")
+                                                   :coding-system utf-8-unix)
+                                          (clisp   ("clisp")
+                                                   :coding-system utf-8-unix)
+                                          (ecl     ("ecl")
+                                                   :coding-system utf-8-unix)
+                                          (abcl    ("abcl")
+                                                   :coding-system utf-8-unix)))
                                        ((string-equal system-type "windows-nt")
                                         '((sbcl ("sbcl"))))
                                        ((string-equal system-type "darwin")
-                                        '((sbcl ("sbcl")))))))
+                                        '((sbcl ("sbcl")))))
+        sly-auto-select-connection 'always
+        sly-command-switch-to-existing-lisp 'always))
 
 (with-eval-after-load 'sly-mrepl
   (define-key sly-mrepl-mode-map (kbd "<up>")'sly-mrepl-previous-input-or-button)
@@ -328,11 +337,11 @@ Version 2020-06-26"
 (bind-key "<C-dead-acute>" 'sly-mrepl-clear-repl)
 
 ;; Sly
-(setf sly-command-switch-to-existing-lisp 'always)
-
-;; (global-set-key (kbd "<S-f2>")   'sly-connect)
-(global-set-key (kbd "<f2>")     'sly)
-(global-set-key (kbd "<S-f2>")   'sly-connect)
+(bind-key "<f2>" 'sly)
+(bind-key "<S-f2>" (lambda () (interactive)
+                     (let ((current-prefix-arg '-))
+                       (call-interactively 'sly))))
+(bind-key "<C-f2>" 'sly-connect)
 ;; (cond ((string-equal system-type "gnu/linux")
 ;;        (global-set-key (kbd "<f2>")     'sly)
 ;;        (global-set-key (kbd "<S-f2>")   'sly-connect))
@@ -346,7 +355,6 @@ Version 2020-06-26"
 ;;        (global-set-key (kbd "<S-f2>")   'sly-connect)))
 (global-set-key (kbd "<C-S-f2>") 'sly-disconnect)
 ;; MREPL
-;; (global-set-key (kbd "<f2>")  'sly-mrepl)
 ;; Compile
 (global-set-key (kbd "<S-f5>")   'sly-compile-defun)
 (global-set-key (kbd "<f5>")     'sly-compile-and-load-file)
@@ -531,7 +539,8 @@ Version 2020-06-26"
                                         ; Usa el tab para completar
 (setq tab-always-indent 'complete)
 (setq-default c-tab-always-indent 'complete)
-(global-set-key (kbd "<C-tab>") 'tab-to-tab-stop)
+(bind-key "<C-tab>" 'tab-to-tab-stop)
+;; (bind-key "<C-tab>" 'next-buffer)
 
                                         ; Man para company
 (use-package company-quickhelp :ensure t)
@@ -1339,7 +1348,9 @@ Version 2020-06-26"
 (global-set-key (kbd "<M-up>")    'backward-paragraph)
 (global-set-key (kbd "<M-down>")  'forward-paragraph)
 ;; Eval
-(global-set-key (kbd "<M-f5>")    'eval-buffer)
+(global-set-key (kbd "<f10>")    'eval-buffer)
+(global-set-key (kbd "<S-f10>")  'eval-last-sexp)
+(global-set-key (kbd "<C-f10>")  'describe-variable)
 ;; Identacion
 (global-set-key (kbd "<backtab>") 'indent-region)
 ;; Cerrar ventana
