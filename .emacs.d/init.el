@@ -115,6 +115,11 @@ Version 2020-06-26"
 (wakib-keys 1)
 (global-set-key (kbd "C-r") 'query-replace)
 
+;; Evil
+(use-package evil
+  :ensure t
+  :config (bind-key [f1] 'evil-mode))
+
 (use-package ediff
   :defer t
   :ensure nil
@@ -230,7 +235,6 @@ Version 2020-06-26"
 
 ;; TODO global-set-key dentro de los plugins
 (use-package dired-sidebar
-  ;; :bind (("<f2>" . dired-sidebar-toggle-sidebar))
   :ensure t
   :commands (dired-sidebar-toggle-sidebar)
   :init
@@ -245,7 +249,8 @@ Version 2020-06-26"
   (setq dired-sidebar-theme 'vscode)
   (setq dired-sidebar-use-term-integration t)
   (setq dired-sidebar-use-custom-font t))
-(bind-key [f1] 'dired-sidebar-toggle-sidebar)
+(bind-key [C-f12] 'dired-sidebar-toggle-sidebar)
+(bind-key [S-f12] 'dired-sidebar-toggle-sidebar)
 ;; TODO No funciona desactivar Mark Set
                                         ;(global-unset-key (kbd "M-s"))
                                         ;(global-set-key (kbd "M-s") 'dired-sidebar-toggle-sidebar)
@@ -682,7 +687,7 @@ Version 2020-06-26"
  '(org-fontify-done-headline nil)
  '(org-fontify-todo-headline nil)
  '(package-selected-packages
-   '(which-key helm-sly lush-theme rimero-theme rebecca-theme northcode-theme seoul256-theme paganini-theme ujelly-theme darcula-theme flatland-theme nyx-theme mustard-theme flatland-black-theme abyss-theme snazzy-theme mbo70s-theme mellow-theme colonoscopy-theme firecode-theme mustang-theme busybee-theme dakrone-theme dark-krystal-theme bliss-theme boron-theme monokai-alt-theme sublime-themes arjen-grey-theme flatui-dark-theme blackboard-theme zweilight-theme kosmos-theme darkburn-theme creamsody-theme clues-theme madhat2r-theme noctilux-theme omtose-phellack-theme warm-night-theme farmhouse-theme badwolf-theme forest-blue-theme metalheart-theme oceanic-theme kooten-theme sourcerer-theme liso-theme twilight-anti-bright-theme darkmine-theme caroline-theme toxi-theme idea-darkula-theme dark-mint-theme distinguished-theme hamburg-theme borland-blue-theme ubuntu-theme hc-zenburn-theme cherry-blossom-theme green-phosphor-theme heroku-theme reverse-theme waher-theme badger-theme purple-haze-theme bubbleberry-theme soothe-theme hemisu-theme calmer-forest-theme django-theme underwater-theme soft-charcoal-theme twilight-theme birds-of-paradise-plus-theme ir-black-theme zen-and-art-theme tango-2-theme green-screen-theme atom-dark-theme brutalist-theme foggy-night-theme seti-theme panda-theme mandm-theme arc-dark-theme naquadah-theme color-theme suscolors-theme naysayer-theme minsk-theme sweet-theme undersea-theme one-themes night-owl-theme ayu-theme darkokai-theme iceberg-theme color-theme-sanityinc-solarized lavenderless-theme reykjavik-theme atom-one-dark-theme chocolate-theme enlightened-theme mlso-theme avk-emacs-themes nova-theme ## shades-of-purple-theme leuven-theme purp-theme spacemacs-theme zeno-theme immaterial-theme ancient-one-dark-theme zerodark-theme inkpot-theme timu-spacegrey-theme tangotango-theme molokai-theme gotham-theme remember-last-theme darker-themekaolin-theme nimbus-theme gruber-darker-theme deadgrep visual-regexp symon doom-modeline spaceline spaceline-config ergoemacs-status smart-mode-line diminish all-the-icons helm-projectile helm-swoop good-scroll highlight-symbol rainbow-identifiers rainbow-mode rainbow-blocks hl-block-mode hl-block smartparens-config smartparens hl-todo undo-fu multiple-cursors move-text duplicate-thing kaolin-themes afternoon-theme darktooth-theme ample-theme moe-theme rainbow-delimiters material-theme gruvbox-theme monokai-pro-theme zenburn-theme cyberpunk-theme cyberpunk-2019-theme vscode-icon theme-looper dracula-theme peacock-theme subatomic256-theme subatomic-theme nord-theme monokai-theme centaur-tabs company-quickhelp helm-ring helm-info helm-elisp helm-buffers helm-for-files helm-find helm-command startup rg company wakib-keys vterm-toggle use-package sly-asdf magit helm))
+   '(evil which-key helm-sly lush-theme rimero-theme rebecca-theme northcode-theme seoul256-theme paganini-theme ujelly-theme darcula-theme flatland-theme nyx-theme mustard-theme flatland-black-theme abyss-theme snazzy-theme mbo70s-theme mellow-theme colonoscopy-theme firecode-theme mustang-theme busybee-theme dakrone-theme dark-krystal-theme bliss-theme boron-theme monokai-alt-theme sublime-themes arjen-grey-theme flatui-dark-theme blackboard-theme zweilight-theme kosmos-theme darkburn-theme creamsody-theme clues-theme madhat2r-theme noctilux-theme omtose-phellack-theme warm-night-theme farmhouse-theme badwolf-theme forest-blue-theme metalheart-theme oceanic-theme kooten-theme sourcerer-theme liso-theme twilight-anti-bright-theme darkmine-theme caroline-theme toxi-theme idea-darkula-theme dark-mint-theme distinguished-theme hamburg-theme borland-blue-theme ubuntu-theme hc-zenburn-theme cherry-blossom-theme green-phosphor-theme heroku-theme reverse-theme waher-theme badger-theme purple-haze-theme bubbleberry-theme soothe-theme hemisu-theme calmer-forest-theme django-theme underwater-theme soft-charcoal-theme twilight-theme birds-of-paradise-plus-theme ir-black-theme zen-and-art-theme tango-2-theme green-screen-theme atom-dark-theme brutalist-theme foggy-night-theme seti-theme panda-theme mandm-theme arc-dark-theme naquadah-theme color-theme suscolors-theme naysayer-theme minsk-theme sweet-theme undersea-theme one-themes night-owl-theme ayu-theme darkokai-theme iceberg-theme color-theme-sanityinc-solarized lavenderless-theme reykjavik-theme atom-one-dark-theme chocolate-theme enlightened-theme mlso-theme avk-emacs-themes nova-theme ## shades-of-purple-theme leuven-theme purp-theme spacemacs-theme zeno-theme immaterial-theme ancient-one-dark-theme zerodark-theme inkpot-theme timu-spacegrey-theme tangotango-theme molokai-theme gotham-theme remember-last-theme darker-themekaolin-theme nimbus-theme gruber-darker-theme deadgrep visual-regexp symon doom-modeline spaceline spaceline-config ergoemacs-status smart-mode-line diminish all-the-icons helm-projectile helm-swoop good-scroll highlight-symbol rainbow-identifiers rainbow-mode rainbow-blocks hl-block-mode hl-block smartparens-config smartparens hl-todo undo-fu multiple-cursors move-text duplicate-thing kaolin-themes afternoon-theme darktooth-theme ample-theme moe-theme rainbow-delimiters material-theme gruvbox-theme monokai-pro-theme zenburn-theme cyberpunk-theme cyberpunk-2019-theme vscode-icon theme-looper dracula-theme peacock-theme subatomic256-theme subatomic-theme nord-theme monokai-theme centaur-tabs company-quickhelp helm-ring helm-info helm-elisp helm-buffers helm-for-files helm-find helm-command startup rg company wakib-keys vterm-toggle use-package sly-asdf magit helm))
  '(pdf-view-midnight-colors '("#fdf4c1" . "#1d2021"))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
