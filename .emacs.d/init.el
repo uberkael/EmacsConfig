@@ -342,11 +342,11 @@ Version 2020-06-26"
 (bind-key "<C-dead-acute>" 'sly-mrepl-clear-repl)
 
 ;; Sly
-(bind-key "<f2>" 'sly)
+(bind-key "<f2>"   'sly)
+(bind-key "<C-f2>" 'sly-connect)
 (bind-key "<S-f2>" (lambda () (interactive)
                      (let ((current-prefix-arg '-))
                        (call-interactively 'sly))))
-(bind-key "<C-f2>" 'sly-connect)
 ;; (cond ((string-equal system-type "gnu/linux")
 ;;        (global-set-key (kbd "<f2>")     'sly)
 ;;        (global-set-key (kbd "<S-f2>")   'sly-connect))
