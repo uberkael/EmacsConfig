@@ -951,14 +951,15 @@ Version 2020-06-26"
   ("C-<next>" . centaur-tabs-forward))
 
 ;; Simbolos lambda
-(global-prettify-symbols-mode 1)
-(setq prettify-symbols-alist
-      '(
-                                        ;("lambda" . 955) ; λ
-        ("->" . 8594)    ; →
-        ("=>" . 8658)    ; ⇒
-        ("map" . 8614)    ; ↦
-        ))
+;; (global-prettify-symbols-mode 1)
+;; (global-prettify-symbols-mode 0)
+;; (setq prettify-symbols-alist
+;;       '(
+;;                                         ;("lambda" . 955) ; λ
+;;         ("->" . 8594)    ; →
+;;         ("=>" . 8658)    ; ⇒
+;;         ("map" . 8614)    ; ↦
+;;         ))
 
 ;; Themes
 (use-package kaolin-themes
