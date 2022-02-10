@@ -373,9 +373,11 @@ Version 2020-06-26"
 (global-set-key (kbd "<M-f6>")   'sly-stickers-replay)
 (global-set-key (kbd "<C-f6>")   'sly-who-calls)
 ;; Trace
-(global-set-key (kbd "<f7>")     'sly-toggle-trace-fdefinition)
-(global-set-key (kbd "<S-f7>")   'sly-toggle-fancy-trace)
-(global-set-key (kbd "<M-f7>")   'sly-trace-dialog)
+(global-set-key (kbd "<f7>")      'sly-trace-dialog-toggle-trace)
+(global-set-key (kbd "<M-f7>")    'sly-toggle-trace-fdefinition)
+;; (global-set-key (kbd "<f7>")   'sly-toggle-trace-fdefinition)
+;; (global-set-key (kbd "<S-f7>") 'sly-toggle-fancy-trace)
+(global-set-key (kbd "<S-f7>")    'sly-trace-dialog)
 ;; Eval
 (global-set-key (kbd "<f8>")     'sly-eval-defun)
 (global-set-key (kbd "<S-f8>")   'sly-eval-region)
