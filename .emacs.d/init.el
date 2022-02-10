@@ -414,9 +414,22 @@ Version 2020-06-26"
   (interactive)
   (sly-connect "10.160.9.63" "4006"))
 
+(defun sly-edge-stg ()
+  (interactive)
+  (sly-connect "10.160.9.79" "4006"))
+
+(defun sly-edge-prod ()
+  (interactive)
+  (sly-connect "10.160.9.77" "4006"))
+
 (defun sly-garm ()
   (interactive)
   (sly-connect "garm.local" "4006"))
+
+;;        (global-set-key (kbd "<S-f2>") (lambda () (interactive)
+;;                                         (find-file "/plink:garm.local:~/git/ravenpack/MisLisp/")
+;;                                         (message "Opened:  %s" (buffer-name)))))
+
 
 (defun launch-mc ()
   (interactive)
