@@ -1268,8 +1268,8 @@ Version 2020-06-26"
 (add-to-list 'load-path "~/.emacs.d/elpa/clede/")
 (use-package clede
   :init
-  (let* ((ravepack-project "~/git/ravenpack")
-         (system-file (expand-file-name "system.lisp" ravepack-project)))
+  (let* ((system-file (expand-file-name "system.lisp" "~/git/ravenpack"))
+         (ram-file (expand-file-name "system.lisp" "/mnt/ram/git/ravenpack")))
     (setq clede-commands-list
           `(("Start MC gen5" .
              ,(format "(load  \"%s\")
@@ -1277,6 +1277,12 @@ Version 2020-06-26"
                        (excl:load-system :mis.management-console :compile t)
                        (mc:start-application :management-console :environment :development :variant :gen5-only)
                        (setf dbu:*db-cache-dir* nil)" system-file))
+            ("Start MC gen5 RAM" .
+             ,(format "(load  \"%s\")
+                       (excl:clean-system :mis.management-console)
+                       (excl:load-system :mis.management-console :compile t)
+                       (mc:start-application :management-console :environment :development :variant :gen5-only)
+                       (setf dbu:*db-cache-dir* nil)" ram-file))
             ("Pretty Print" .
              "slynk::(setf slynk::*slynk-pprint-bindings*
                            `((*print-pretty*           . t)
