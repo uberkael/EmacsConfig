@@ -1379,15 +1379,15 @@ Version 2020-06-26"
 ;; Comentarios
 (global-set-key (kbd "C-+")       'comment-line)
 ;; Ventanas
-(global-set-key (kbd "M-!")       'split-window-right)
-(global-set-key (kbd "M-\"")      'delete-other-windows)
-(global-set-key (kbd "M-#")       'delete-window)
-(global-set-key (kbd "M-$")       'split-window-below)
+(global-set-key (kbd "M-!")       'delete-other-windows)
+(global-set-key (kbd "M-\"")      'split-window-right)
+(global-set-key (kbd "M-#")       'split-window-below)
+(bind-key "M-$" 'delete-window)
 
-(global-set-key (kbd "C-!")       'split-window-right)
-(global-set-key (kbd "C-\"")      'delete-other-windows)
-(global-set-key (kbd "C-#")       'delete-window)
-(global-set-key (kbd "C-$")       'split-window-below)
+(global-set-key (kbd "C-!")       'delete-other-windows)
+(global-set-key (kbd "C-\"")      'split-window-right)
+(global-set-key (kbd "C-#")       'split-window-below)
+(global-set-key (kbd "C-$")       'delete-window)
 ;; Cambio buffers
 (global-set-key (kbd "<mouse-8>") 'previous-buffer)
 (global-set-key (kbd "<mouse-9>") 'next-buffer)
