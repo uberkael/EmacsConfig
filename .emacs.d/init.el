@@ -419,6 +419,20 @@ Version 2020-06-26"
 ;; (define-key isearch-mode-map (kbd "<down>") 'isearch-ring-advance)
 
 ;; Conexiones
+(defun sly-local ()
+  (interactive)
+  (if (sly-connected-p)
+      (call-interactively 'sly)
+    (sly-connect "localhost" "4006")))
+
+(defun sly-box ()
+  (interactive)
+  (sly-connect "10.160.9.55" "4006"))
+
+(defun sly-garm ()
+  (interactive)
+  (sly-connect "garm.local" "4006"))
+
 (defun sly-marbella-worker1 ()
   (interactive)
   (sly-connect "10.160.9.69" "4006"))
