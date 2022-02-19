@@ -384,20 +384,22 @@ Version 2020-06-26"
 (global-set-key (kbd "<S-f5>")   'sly-compile-defun)
 (global-set-key (kbd "<f5>")     'sly-compile-and-load-file)
 (global-set-key (kbd "<C-f5>")   'sly-macroexpand-1)
+(global-set-key (kbd "<M-f5>")   'sly-apropos-all)
+;; Trace
 ;; Interupt
 (bind-key "C-S-c" 'sly-interrupt)
 ;; Stickers
 (global-unset-key (kbd "<f6>"))
 (global-set-key (kbd "<f6>")     'sly-stickers-dwim)
 (global-set-key (kbd "<S-f6>")   'sly-stickers-toggle-break-on-stickers)
-(global-set-key (kbd "<M-f6>")   'sly-stickers-replay)
-(global-set-key (kbd "<C-f6>")   'sly-who-calls)
+(global-set-key (kbd "<C-f6>")   'sly-stickers-replay)
+(global-set-key (kbd "<M-f6>")   'sly-who-references)
 ;; Trace
 (global-set-key (kbd "<f7>")      'sly-trace-dialog-toggle-trace)
-(global-set-key (kbd "<M-f7>")    'sly-toggle-trace-fdefinition)
+(global-set-key (kbd "<S-f7>")    'sly-toggle-trace-fdefinition)
 ;; (global-set-key (kbd "<f7>")   'sly-toggle-trace-fdefinition)
 ;; (global-set-key (kbd "<S-f7>") 'sly-toggle-fancy-trace)
-(global-set-key (kbd "<S-f7>")    'sly-trace-dialog)
+(global-set-key (kbd "<C-f7>")    'sly-trace-dialog)
 ;; Eval
 (global-set-key (kbd "<f8>")     'sly-eval-defun)
 (global-set-key (kbd "<S-f8>")   'sly-eval-region)
