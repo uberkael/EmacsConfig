@@ -362,11 +362,6 @@ Version 2020-06-26"
 (bind-key "<C-dead-acute>" 'sly-mrepl-clear-repl)
 
 ;; Sly
-(bind-key "<f2>"   'sly)
-(bind-key "<C-f2>" 'sly-connect)
-(bind-key "<S-f2>" (lambda () (interactive)
-                     (let ((current-prefix-arg '-))
-                       (call-interactively 'sly))))
 ;; (cond ((string-equal system-type "gnu/linux")
 ;;        (global-set-key (kbd "<f2>")     'sly)
 ;;        (global-set-key (kbd "<S-f2>")   'sly-connect))
@@ -444,14 +439,9 @@ Version 2020-06-26"
   (interactive)
   (sly-connect "10.160.9.77" "4006"))
 
-(defun sly-garm ()
-  (interactive)
-  (sly-connect "garm.local" "4006"))
-
 ;;        (global-set-key (kbd "<S-f2>") (lambda () (interactive)
 ;;                                         (find-file "/plink:garm.local:~/git/ravenpack/MisLisp/")
 ;;                                         (message "Opened:  %s" (buffer-name)))))
-
 
 (defun launch-mc ()
   (interactive)
@@ -616,7 +606,10 @@ Version 2020-06-26"
 (setq-default indent-tabs-mode nil)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq require-final-newline t)
-
+(setq-default require-final-newline t)
+(customize-set-variable 'require-final-newline t)
+;; (add-hook 'before-save-hook (lambda () (setq-local require-final-newline t)))
+;; (add-hook 'lisp-mode (lambda () (setq-local require-final-newline t)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
