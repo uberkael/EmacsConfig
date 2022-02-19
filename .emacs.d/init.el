@@ -11,6 +11,26 @@
 (setq initial-scratch-message "")
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+;; Sesiones
+(setq desktop-path '("~/"))
+(setq desktop-load-locked-desktop t)
+(desktop-save-mode 1)
+
+;; (defun desktop-save-main ()
+  ;; (desktop-save "~/"))
+;; (add-hook 'kill-emacs-hook 'desktop-save-main)
+
+;; Ravenpack exports
+;; (setenv "RP_REPOS" "~/git")
+;; (setenv "PATH" "$PATH:/opt/acl10.1-smp.64")
+;; (setenv "ACL_LOCALE" "C.latin1")
+;; (setenv "NLS_LANG" "AMERICAN.WE8ISO8859P1")
+;; (setenv "ORACLE_HOME" "/opt/oracle/product/11.2.0.3/client_1/lib")
+;; (setenv "LD_LIBRARY_PATH" "$ORACLE_HOME:/usr/lib/x86_64-linux-gnu")
+;; (setenv "TNS_ADMIN" "$RP_REPOS/configuration")
+;; (setenv "IFILE" "$TNS_ADMIN/tnsnames.ora")
+
+
 ;; Default coding
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
