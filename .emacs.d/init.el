@@ -1308,7 +1308,19 @@ Version 2020-06-26"
   (let* ((system-file (expand-file-name "system.lisp" "~/git/ravenpack"))
          (ram-file (expand-file-name "system.lisp" "/mnt/ram/git/ravenpack")))
     (setq clede-commands-list
-          `(("Start MC gen5" .
+          `(("Recompile MC" .
+             ,(format
+               "(macrolet ((find-and-invoke (name)
+                          `(let ((restart (find-restart ,name)))
+                             (when restart
+                               (invoke-restart restart)))))
+               (handler-bind
+                   ((error (lambda (condition)
+                             (declare (ignore condition))
+                             (find-and-invoke 'continue)
+                             (find-and-invoke 'unintern))))
+                 (load-system :dms-base :compile t)))" system-file))
+            ("Start MC gen5" .
              ,(format "(load  \"%s\")
                        (excl:clean-system :mis.management-console)
                        (excl:load-system :mis.management-console :compile t)
