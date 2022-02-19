@@ -461,6 +461,13 @@ Version 2020-06-26"
 ;; (sly-stickers-toggle-break-on-stickers)
 ;; TODO click con raton en breaks
 
+;; (bind-key "<f2>"   'sly)
+(bind-key "<f2>"   'sly-local)
+(bind-key "<S-f2>" (lambda () (interactive)
+                     (let ((current-prefix-arg '-))
+                       (call-interactively 'sly))))
+(bind-key "<C-f2>" 'sly-connect)
+
 ;; Make sure that the bash executable can be found
 (cond
  ((string-equal system-type "windows-nt")
