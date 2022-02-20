@@ -395,6 +395,7 @@ Version 2020-06-26"
 ;; (global-set-key (kbd "<f7>")   'sly-toggle-trace-fdefinition)
 ;; (global-set-key (kbd "<S-f7>") 'sly-toggle-fancy-trace)
 (global-set-key (kbd "<C-f7>")    'sly-trace-dialog)
+(global-set-key (kbd "<M-f7>")    'sly-list-threads)
 ;; Eval
 (global-set-key (kbd "<f8>")     'sly-eval-defun)
 (global-set-key (kbd "<S-f8>")   'sly-eval-region)
