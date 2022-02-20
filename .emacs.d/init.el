@@ -1448,6 +1448,37 @@ Version 2020-06-26"
 ;; (bind-key "C-." 'xref-find-definitions)
 ;; (bind-key "C-," 'xref-pop-marker-stack)
 
+;; Blink diferentes colores
+;; (defvar blink-cursor-colors (list  "#92c48f" "#6785c5" "#be369c" "#d9ca65")
+  ;; "On each blink the cursor will cycle to the next color in this list.")
+;; (setq blink-cursor-count 0)
+;; (defun blink-cursor-timer-function ()
+;;   "Zarza wrote this cyberpunk variant of timer `blink-cursor-timer'.
+;; Warning: overwrites original version in `frame.el'.
+;; This one changes the cursor color on each blink. Define colors in `blink-cursor-colors'."
+;;   (when (not (internal-show-cursor-p))
+;;     (when (>= blink-cursor-count (length blink-cursor-colors))
+;;       (setq blink-cursor-count 0))
+;;     (set-cursor-color (nth blink-cursor-count blink-cursor-colors))
+;;     (setq blink-cursor-count (+ 1 blink-cursor-count))
+;;     )
+;;   (internal-show-cursor nil (not (internal-show-cursor-p))))
+
+;; Caret cursor
+;; (setq cursor-type '(bar . 5))
+;; (setq cursor-type 'box)
+;; (blink-cursor-mode 1)
+(set-cursor-color "#ffff00")
+(setq blink-cursor-interval .15)
+(setq cursor-type 'hollow)
+
+(setq evil-emacs-state-cursor '("yellow" box))
+;; (setq evil-normal-state-cursor '("firebrick" box))
+(setq evil-normal-state-cursor '("yellow" hollow))
+(setq evil-visual-state-cursor '("cyan" box))
+(setq evil-insert-state-cursor '("cyan" box))
+(setq evil-replace-state-cursor '("red" box))
+(setq evil-operator-state-cursor '("yellow" box))
 
 ;; (set-face-attribute 'bold nil :font "Consolas Ligaturized" :height 160)
 ;; (set-frame-font "Consolas Ligaturized" nil t)
