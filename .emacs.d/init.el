@@ -454,6 +454,10 @@ Version 2020-06-26"
   (interactive)
   (sly-connect "10.160.9.77" "4006"))
 
+(defun sly-migthy ()
+(interactive)
+  (sly-connect "10.200.0.90" "4006"))
+
 ;;        (global-set-key (kbd "<S-f2>") (lambda () (interactive)
 ;;                                         (find-file "/plink:garm.local:~/git/ravenpack/MisLisp/")
 ;;                                         (message "Opened:  %s" (buffer-name)))))
