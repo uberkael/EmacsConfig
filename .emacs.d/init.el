@@ -861,6 +861,7 @@ Version 2020-06-26"
 (global-set-key (kbd "C-(")           'sp-backward-sexp)
 (global-set-key (kbd "C-)")           'sp-forward-sexp)
 ;; TODO seleccion continua
+(global-set-key (kbd "C-=")           'sp-splice-sexp)
 (global-set-key (kbd "C-?")           'sp-select-previous-thing-exchange)
 (global-set-key (kbd "M-?")           'sp-select-previous-thing-exchange)
 (global-set-key (kbd "C-¿")           'sp-select-next-thing-exchange)
@@ -1326,17 +1327,19 @@ Version 2020-06-26"
                              (find-and-invoke 'unintern))))
                  (load-system :dms-base :compile t)))" system-file))
             ("Start MC gen5" .
-             ,(format "(load  \"%s\")
-                       (excl:clean-system :mis.management-console)
-                       (excl:load-system :mis.management-console :compile t)
-                       (mc:start-application :management-console :environment :development :variant :gen5-only)
-                       (setf dbu:*db-cache-dir* nil)" system-file))
+             ,(format
+               "(load  \"%s\")
+(excl:clean-system :mis.management-console)
+(excl:load-system :mis.management-console :compile t)
+(mc:start-application :management-console :environment :development :variant :gen5-only)
+(setf dbu:*db-cache-dir* nil)" system-file))
             ("Start MC gen5 RAM" .
-             ,(format "(load  \"%s\")
-                       (excl:clean-system :mis.management-console)
-                       (excl:load-system :mis.management-console :compile t)
-                       (mc:start-application :management-console :environment :development :variant :gen5-only)
-                       (setf dbu:*db-cache-dir* nil)" ram-file))
+             ,(format
+               "(load  \"%s\")
+excl:clean-system :mis.management-console)
+(excl:load-system :mis.management-console :compile t)
+(mc:start-application :management-console :environment :development :variant :gen5-only)
+(setf dbu:*db-cache-dir* nil)" ram-file))
             ("Pretty Print" .
              "slynk::(setf slynk::*slynk-pprint-bindings*
                            `((*print-pretty*           . t)
@@ -1347,8 +1350,14 @@ Version 2020-06-26"
                              (*print-gensym*           . t)
                              (*print-readably*         . nil)))")
             ("Start DS" .
-             ,(format "(progn (load \"%s\")(excl:clean-system :mis.dataset-server) (excl:load-system :mis.dataset-server :compile t) )" system-file))
-            ("Launch DSS API" . "(progn (dss::start-application :dataset-server-gen4 :port 9091 :load-resources nil :log-to-slack-p nil :environment :default :variant :Default :force-p t) (setf dss::*skip-analytics-check* t))"))))
+             ,(format "(progn (load \"%s\")
+(excl:clean-system :mis.dataset-server)
+(excl:load-system :mis.dataset-server :compile t) )"
+                      system-file))
+            ("Launch DSS API" .
+             "(progn (dss::start-application :dataset-server-gen4 :port 9091
+:load-resources nil :log-to-slack-p nil :environment :default :variant :Default :force-p t)
+(setf dss::*skip-analytics-check* t))"))))
   :config
   ;; (define-key clede-minor-mode-map [escape] 'imenu-list-quit-window)
   ;; (define-key clede-minor-mode-map [escape] 'delete-window)
@@ -1372,6 +1381,16 @@ Version 2020-06-26"
                 :machine-instance "garm"
                 :remote-host "garm.local"
                 :username "kael")))
+
+
+;; Ruler linea 80
+(require 'whitespace)
+(setq whitespace-line-column 90) ;; limit line length
+(setq whitespace-style '(face lines-tail))
+
+(add-hook 'prog-mode-hook 'whitespace-mode)
+;; (add-hook 'window-configuration-change-hook (lambda () (ruler-mode 1)))
+;; (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
 ;; So that M-. will work correctly.
 ;; (setq sly-filename-translations
