@@ -448,7 +448,7 @@ Then add C-d and C-e to KEYMAP"
     ("C-z" . undo)
     ;; ("C-f" . isearch-forward)
     ;; ("C-S-f" . isearch-backward)
-    ("C-r" . query-replace)
+    ;; ("C-r" . query-replace)
     ("C-S-r" . query-replace-regexp)
     ("C-s" . save-buffer)
     ("C-S-s" . write-file)
