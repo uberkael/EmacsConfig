@@ -381,6 +381,9 @@ Version 2020-06-26"
 ;;        (global-set-key (kbd "<S-f2>")   'sly-connect)))
 (global-set-key (kbd "<C-S-f2>") 'sly-disconnect)
 ;; MREPL
+;; Inspect
+(bind-key "<f4>" 'sly-inspector-pop)
+(bind-key "<S-f4>" 'sly-pprint-eval-last-expression)
 ;; Compile
 (global-set-key (kbd "<S-f5>")   'sly-compile-defun)
 (global-set-key (kbd "<f5>")     'sly-compile-and-load-file)
@@ -394,7 +397,7 @@ Version 2020-06-26"
 (global-set-key (kbd "<f6>")     'sly-stickers-dwim)
 (global-set-key (kbd "<S-f6>")   'sly-stickers-toggle-break-on-stickers)
 (global-set-key (kbd "<C-f6>")   'sly-stickers-replay)
-(global-set-key (kbd "<M-f6>")   'sly-pprint-eval-last-expression)
+;; (global-set-key (kbd "<M-f6>")   'sly-pprint-eval-last-expression)
 ;; Trace
 (global-set-key (kbd "<f7>")      'sly-trace-dialog-toggle-trace)
 (global-set-key (kbd "<S-f7>")    'sly-toggle-trace-fdefinition)
