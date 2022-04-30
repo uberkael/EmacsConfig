@@ -1497,6 +1497,15 @@ excl:clean-system :mis.management-console)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 ;; Open config
 (bind-key "C--" (lambda () (interactive) (find-file user-init-file)))
+
+;; Cut lines
+;; https://pragmaticemacs.wordpress.com/2015/05/08/cut-whole-line/
+(defadvice kill-region (before slick-cut activate compile)
+  "When called interactively with no active region, kill a single line instead."
+  (interactive
+   (if mark-active (list (region-beginning) (region-end))
+     (list (line-beginning-position)
+           (line-beginning-position 2)))))
 ;; Change definition navigation
 ;; (bind-key "C-." 'xref-find-definitions)
 ;; (bind-key "C-," 'xref-pop-marker-stack)
