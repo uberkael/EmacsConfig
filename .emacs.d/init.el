@@ -365,72 +365,6 @@ Version 2020-06-26"
 (defvar *use-dedicated-output-stream* nil
   "When T, dedicate a second stream for sending output to Emacs.")
 
-;; (define-key sly-mrepl-mode-map (kbd "<C-dead-acute>") 'sly-mrepl-clear-repl)
-;; (global-set-key (kbd "<C-dead-acute>") 'sly-mrepl-clear-repl)
-;; (global-set-key (kbd "<C-dead-acute>") 'sly-qrepl-clear-repl)
-(bind-key "<C-dead-acute>" 'sly-mrepl-clear-repl)
-
-;; Sly
-;; (cond ((string-equal system-type "gnu/linux")
-;;        (global-set-key (kbd "<f2>")     'sly)
-;;        (global-set-key (kbd "<S-f2>")   'sly-connect))
-;;       ((string-equal system-type "windows-nt")
-;;        (global-set-key (kbd "<f2>")     'sly-garm)
-;;        (global-set-key (kbd "<S-f2>") (lambda () (interactive)
-;;                                         (find-file "/plink:garm.local:~/git/ravenpack/MisLisp/")
-;;                                         (message "Opened:  %s" (buffer-name)))))
-;;       ((string-equal system-type "darwin")
-;;        (global-set-key (kbd "<f2>")     'sly)
-;;        (global-set-key (kbd "<S-f2>")   'sly-connect)))
-(global-set-key (kbd "<C-S-f2>") 'sly-disconnect)
-;; MREPL
-;; Inspect
-(bind-key "<f4>" 'sly-inspector-pop)
-(bind-key "<S-f4>" 'sly-pprint-eval-last-expression)
-;; Compile
-(global-set-key (kbd "<S-f5>")   'sly-compile-defun)
-(global-set-key (kbd "<f5>")     'sly-compile-and-load-file)
-(global-set-key (kbd "<C-f5>")   'sly-macroexpand-1)
-(global-set-key (kbd "<M-f5>")   'sly-apropos-all)
-;; Trace
-;; Interupt
-(bind-key "C-S-c" 'sly-interrupt)
-;; Stickers
-(global-unset-key (kbd "<f6>"))
-(global-set-key (kbd "<f6>")     'sly-stickers-dwim)
-(global-set-key (kbd "<S-f6>")   'sly-stickers-toggle-break-on-stickers)
-(global-set-key (kbd "<C-f6>")   'sly-stickers-replay)
-;; (global-set-key (kbd "<M-f6>")   'sly-pprint-eval-last-expression)
-;; Trace
-(global-set-key (kbd "<f7>")      'sly-trace-dialog-toggle-trace)
-(global-set-key (kbd "<S-f7>")    'sly-toggle-trace-fdefinition)
-;; (global-set-key (kbd "<f7>")   'sly-toggle-trace-fdefinition)
-;; (global-set-key (kbd "<S-f7>") 'sly-toggle-fancy-trace)
-(global-set-key (kbd "<C-f7>")    'sly-trace-dialog)
-(global-set-key (kbd "<M-f7>")    'sly-list-threads)
-;; Eval
-(global-set-key (kbd "<f8>")     'sly-eval-defun)
-(global-set-key (kbd "<S-f8>")   'sly-eval-region)
-;; (global-set-key (kbd "<M-f8>")   'sly-eval-describe)
-(global-set-key (kbd "<M-f8>")   'sly-who-references)
-(global-set-key (kbd "<C-f8>")   'sly-who-calls)
-;; Describe Symbol
-(bind-key "C-." 'sly-describe-symbol)
-(bind-key "C-," 'sly-inspect)
-;; (global-set-key (kbd "<C-f8>")   'sly-pprint-eval-region)
-
-;; (global-set-key (kbd "M-<up>")    'isearch-backward)
-;; (define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
-;; (define-key isearch-mode-map (kbd "<down>") 'isearch-ring-advance)
-
-;; Buscar siguientes resultados en isearch
-(define-key isearch-mode-map (kbd "<up>") 'isearch-repeat-backward)
-(define-key isearch-mode-map (kbd "<down>") 'isearch-repeat-forward)
-;; (define-key isearch-mode-map (kbd "<left>") 'isearch-repeat-backward)
-;; (define-key isearch-mode-map (kbd "<down>") 'isearch-repeat-forward)
-;; (define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
-;; (define-key isearch-mode-map (kbd "<down>") 'isearch-ring-advance)
-
 ;; Conexiones
 (defun sly-local ()
   (interactive)
@@ -478,9 +412,82 @@ Version 2020-06-26"
   (interactive)
   (clede-commands-run "Start MC gen5"))
 
+(defun sly-inspecta ()
+  (interactive)
+  (let ((bar (thing-at-point 'symbol)))
+  (sly-inspect bar)))
+
 ;; TODO mejor manera
 ;; (sly-stickers-toggle-break-on-stickers)
 ;; TODO click con raton en breaks
+
+;; (define-key sly-mrepl-mode-map (kbd "<C-dead-acute>") 'sly-mrepl-clear-repl)
+;; (global-set-key (kbd "<C-dead-acute>") 'sly-mrepl-clear-repl)
+;; (global-set-key (kbd "<C-dead-acute>") 'sly-qrepl-clear-repl)
+(bind-key "<C-dead-acute>" 'sly-mrepl-clear-repl)
+
+;; (cond ((string-equal system-type "gnu/linux")
+;;        (global-set-key (kbd "<f2>")     'sly)
+;;        (global-set-key (kbd "<S-f2>")   'sly-connect))
+;;       ((string-equal system-type "windows-nt")
+;;        (global-set-key (kbd "<f2>")     'sly-garm)
+;;        (global-set-key (kbd "<S-f2>") (lambda () (interactive)
+;;                                         (find-file "/plink:garm.local:~/git/ravenpack/MisLisp/")
+;;                                         (message "Opened:  %s" (buffer-name)))))
+;;       ((string-equal system-type "darwin")
+;;        (global-set-key (kbd "<f2>")     'sly)
+;;        (global-set-key (kbd "<S-f2>")   'sly-connect)))
+(bind-key "<C-S-f2>" 'sly-disconnect)
+;; Interupt
+(bind-key "C-S-c" 'sly-interrupt)
+;; MREPL
+;; Inspect
+(bind-key "<f4>"   'sly-inspecta)
+(bind-key "<S-f4>" 'sly-inspector-reinspect)
+;; Compile
+(bind-key "<f5>"   'sly-compile-and-load-file)
+(bind-key "<S-f5>" 'sly-compile-defun)
+(bind-key "<M-f5>" 'sly-who-references)
+(bind-key "<C-f5>" 'sly-who-calls)
+;; Trace
+;; Stickers
+; (global-unset-key (kbd "<f6>"))
+(bind-key "<f6>"   'sly-stickers-dwim)
+(bind-key "<S-f6>" 'sly-stickers-toggle-break-on-stickers)
+(bind-key "<C-f6>" 'sly-stickers-replay)
+
+;; (global-set-key (kbd "<M-f6>")   'sly-pprint-eval-last-expression)
+;; Trace
+(bind-key "<f7>"   'sly-trace-dialog-toggle-trace)
+(bind-key "<S-f7>" 'sly-toggle-trace-fdefinition)
+;; (global-set-key (kbd "<f7>")   'sly-toggle-trace-fdefinition)
+;; (global-set-key (kbd "<S-f7>") 'sly-toggle-fancy-trace)
+(bind-key "<M-f7>" 'sly-list-threads)
+(bind-key "<C-f7>" 'sly-trace-dialog)
+;; Eval
+(bind-key "<f8>"   'sly-eval-defun)
+(bind-key "<S-f8>" 'sly-apropos-all)
+(bind-key "<C-f8>" 'sly-macroexpand-1)
+;; (bind-key "<S-f8>" 'sly-eval-region)
+;; (global-set-key (kbd "<M-f8>")   'sly-eval-describe)
+
+;; Describe Symbol
+(bind-key "C-." 'sly-describe-symbol)
+(bind-key "C-," 'sly-inspect)
+;; (global-set-key (kbd "<C-f8>")   'sly-pprint-eval-region)
+
+;; (global-set-key (kbd "M-<up>")    'isearch-backward)
+;; (define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
+;; (define-key isearch-mode-map (kbd "<down>") 'isearch-ring-advance)
+
+;; Buscar siguientes resultados en isearch
+(define-key isearch-mode-map (kbd "<up>") 'isearch-repeat-backward)
+(define-key isearch-mode-map (kbd "<down>") 'isearch-repeat-forward)
+;; (define-key isearch-mode-map (kbd "<left>") 'isearch-repeat-backward)
+;; (define-key isearch-mode-map (kbd "<down>") 'isearch-repeat-forward)
+;; (define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
+;; (define-key isearch-mode-map (kbd "<down>") 'isearch-ring-advance)
+
 
 ;; (bind-key "<f2>"   'sly)
 (bind-key "<f2>"   'sly-local)
