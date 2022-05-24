@@ -148,7 +148,8 @@ Version 2020-06-26"
 	ediff-split-window-function #'split-window-horizontally))
 
 ;; imenu
-(use-package imenu-list :ensure t)
+(use-package imenu-list :ensure t
+  :config (setq imenu-list-auto-resize t))
 
 (use-package which-key
   :ensure t
