@@ -341,6 +341,8 @@ Version 2020-06-26"
                                           (ecl     ("ecl")
                                                    :coding-system utf-8-unix)
                                           (abcl    ("abcl")
+                                                   :coding-system utf-8-unix)
+                                          (clasp   ("/usr/bin/clasp")
                                                    :coding-system utf-8-unix)))
                                        ((string-equal system-type "windows-nt")
                                         '((sbcl ("sbcl"))))
