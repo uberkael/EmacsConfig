@@ -340,6 +340,7 @@ Version 2020-06-26"
                                                    :coding-system utf-8-unix)
                                           (ecl     ("ecl")
                                                    :coding-system utf-8-unix)
+                                          ;; Rotos
                                           (abcl    ("abcl")
                                                    :coding-system utf-8-unix)
                                           (clasp   ("/usr/bin/clasp")
@@ -466,7 +467,7 @@ Version 2020-06-26"
 (bind-key "<C-f7>" 'sly-trace-dialog)
 ;; Eval
 (bind-key "<f8>"   'sly-eval-defun)
-(bind-key "<S-f8>" 'sly-apropos-all)
+(bind-key "<M-f8>" 'sly-apropos-all)
 (bind-key "<C-f8>" 'sly-macroexpand-1)
 ;; (bind-key "<S-f8>" 'sly-eval-region)
 ;; (global-set-key (kbd "<M-f8>")   'sly-eval-describe)
