@@ -215,6 +215,11 @@ Version 2020-06-26"
 ;; Go To Anywhere
 (bind-key "C-p" 'helm-for-files)
 (bind-key "C-o" 'helm-find-files)
+(add-to-list 'display-buffer-alist
+             `(,(rx bos "*helm" (* not-newline) "*" eos)
+               (display-buffer-in-side-window)
+               (inhibit-same-window . t)
+               (window-height . 0.4)))
 
 ;; Busqueda Helm Swoop
 (add-to-list 'load-path "~/.emacs.d/elisp/helm-swoop")
