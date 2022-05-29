@@ -221,6 +221,12 @@ Version 2020-06-26"
                (inhibit-same-window . t)
                (window-height . 0.4)))
 
+(defun fer/compile-all ()
+  (interactive)
+  (mapc (lambda (directory)
+          (byte-recompile-directory directory 0 nil))
+        load-path))
+
 ;; Busqueda Helm Swoop
 (add-to-list 'load-path "~/.emacs.d/elisp/helm-swoop")
 (use-package helm-swoop :ensure t
