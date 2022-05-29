@@ -17,7 +17,7 @@
 (desktop-save-mode 1)
 
 ;; (defun desktop-save-main ()
-  ;; (desktop-save "~/"))
+;; (desktop-save "~/"))
 ;; (add-hook 'kill-emacs-hook 'desktop-save-main)
 
 ;; Ravenpack exports
@@ -106,7 +106,7 @@ Version 2020-06-26"
 
 ;; Titulo de da ventana
 ;; (setq-default frame-title-format '("%f [%m]"))
-(setq frame-title-format `(,(user-login-name) "@" ,(system-name) " " global-mode-string " %b" ))
+(setq frame-title-format `(,(user-login-name) "@" ,(system-name) " " global-mode-string " %b"))
 
 ;; Paquetes
 
@@ -145,7 +145,7 @@ Version 2020-06-26"
   :ensure nil
   :config
   (setq ediff-window-setup-function #'ediff-setup-windows-plain
-	ediff-split-window-function #'split-window-horizontally))
+        ediff-split-window-function #'split-window-horizontally))
 
 ;; imenu
 (use-package imenu-list :ensure t
@@ -229,7 +229,7 @@ Version 2020-06-26"
   ;; (setq helm-swoop-use-fuzzy-match nil)
   (define-key helm-swoop-map (kbd "<backtab>") 'helm-previous-line)
   (define-key helm-swoop-map (kbd "<tab>") 'helm-next-line)
-  ; (define-key helm-swoop-map [escape] 'keyboard-escape-quit)
+  ;; (define-key helm-swoop-map [escape] 'keyboard-escape-quit)
   (global-set-key (kbd "C-f") 'helm-swoop)
   ;; (bind-key "C-f" 'helm-swoop)
   (global-set-key (kbd "<f3>") 'helm-swoop-back-to-last-point))
@@ -343,7 +343,7 @@ Version 2020-06-26"
                                           ;; Rotos
                                           (abcl    ("abcl")
                                                    :coding-system utf-8-unix)
-                                          (clasp   ("/usr/bin/clasp")
+                                          (clasp   ("clasp")
                                                    :coding-system utf-8-unix)))
                                        ((string-equal system-type "windows-nt")
                                         '((sbcl ("sbcl"))))
@@ -402,7 +402,7 @@ Version 2020-06-26"
   (sly-connect "10.160.9.77" "4006"))
 
 (defun sly-migthy ()
-(interactive)
+  (interactive)
   (sly-connect "10.200.0.90" "4006"))
 
 ;;        (global-set-key (kbd "<S-f2>") (lambda () (interactive)
@@ -416,7 +416,7 @@ Version 2020-06-26"
 (defun sly-inspecta ()
   (interactive)
   (let ((bar (thing-at-point 'symbol)))
-  (sly-inspect bar)))
+    (sly-inspect bar)))
 
 ;; TODO mejor manera
 ;; (sly-stickers-toggle-break-on-stickers)
@@ -452,7 +452,7 @@ Version 2020-06-26"
 (bind-key "<C-f5>" 'sly-who-calls)
 ;; Trace
 ;; Stickers
-; (global-unset-key (kbd "<f6>"))
+;; (global-unset-key (kbd "<f6>"))
 (bind-key "<f6>"   'sly-stickers-dwim)
 (bind-key "<S-f6>" 'sly-stickers-toggle-break-on-stickers)
 (bind-key "<C-f6>" 'sly-stickers-replay)
@@ -763,7 +763,7 @@ Version 2020-06-26"
  '(org-fontify-done-headline nil)
  '(org-fontify-todo-headline nil)
  '(package-selected-packages
-   '(doom-themes visual-regexp-steroids acme-search evil which-key helm-sly lush-theme rimero-theme rebecca-theme northcode-theme seoul256-theme paganini-theme ujelly-theme darcula-theme flatland-theme nyx-theme mustard-theme flatland-black-theme abyss-theme snazzy-theme mbo70s-theme mellow-theme colonoscopy-theme firecode-theme mustang-theme busybee-theme dakrone-theme dark-krystal-theme bliss-theme boron-theme monokai-alt-theme sublime-themes arjen-grey-theme flatui-dark-theme blackboard-theme zweilight-theme kosmos-theme darkburn-theme creamsody-theme clues-theme madhat2r-theme noctilux-theme omtose-phellack-theme warm-night-theme farmhouse-theme badwolf-theme forest-blue-theme metalheart-theme oceanic-theme kooten-theme sourcerer-theme liso-theme twilight-anti-bright-theme darkmine-theme caroline-theme toxi-theme idea-darkula-theme dark-mint-theme distinguished-theme hamburg-theme borland-blue-theme ubuntu-theme hc-zenburn-theme cherry-blossom-theme green-phosphor-theme heroku-theme reverse-theme waher-theme badger-theme purple-haze-theme bubbleberry-theme soothe-theme hemisu-theme calmer-forest-theme django-theme underwater-theme soft-charcoal-theme twilight-theme birds-of-paradise-plus-theme ir-black-theme zen-and-art-theme tango-2-theme green-screen-theme atom-dark-theme brutalist-theme foggy-night-theme seti-theme panda-theme mandm-theme arc-dark-theme naquadah-theme color-theme suscolors-theme naysayer-theme minsk-theme sweet-theme undersea-theme one-themes night-owl-theme ayu-theme darkokai-theme iceberg-theme color-theme-sanityinc-solarized lavenderless-theme reykjavik-theme atom-one-dark-theme chocolate-theme enlightened-theme mlso-theme avk-emacs-themes nova-theme ## shades-of-purple-theme leuven-theme purp-theme spacemacs-theme zeno-theme immaterial-theme ancient-one-dark-theme zerodark-theme inkpot-theme timu-spacegrey-theme tangotango-theme molokai-theme gotham-theme remember-last-theme darker-themekaolin-theme nimbus-theme gruber-darker-theme deadgrep visual-regexp symon doom-modeline spaceline spaceline-config ergoemacs-status smart-mode-line diminish all-the-icons helm-projectile helm-swoop good-scroll highlight-symbol rainbow-identifiers rainbow-mode rainbow-blocks hl-block-mode hl-block smartparens-config smartparens hl-todo undo-fu multiple-cursors move-text duplicate-thing kaolin-themes afternoon-theme darktooth-theme ample-theme moe-theme rainbow-delimiters material-theme gruvbox-theme monokai-pro-theme zenburn-theme cyberpunk-theme cyberpunk-2019-theme vscode-icon theme-looper dracula-theme peacock-theme subatomic256-theme subatomic-theme nord-theme monokai-theme centaur-tabs company-quickhelp helm-ring helm-info helm-elisp helm-buffers helm-for-files helm-find helm-command startup rg company wakib-keys vterm-toggle use-package sly-asdf magit helm))
+   '(tab-jump-out parinfer-rust-mode doom-themes visual-regexp-steroids acme-search evil which-key helm-sly lush-theme rimero-theme rebecca-theme northcode-theme seoul256-theme paganini-theme ujelly-theme darcula-theme flatland-theme nyx-theme mustard-theme flatland-black-theme abyss-theme snazzy-theme mbo70s-theme mellow-theme colonoscopy-theme firecode-theme mustang-theme busybee-theme dakrone-theme dark-krystal-theme bliss-theme boron-theme monokai-alt-theme sublime-themes arjen-grey-theme flatui-dark-theme blackboard-theme zweilight-theme kosmos-theme darkburn-theme creamsody-theme clues-theme madhat2r-theme noctilux-theme omtose-phellack-theme warm-night-theme farmhouse-theme badwolf-theme forest-blue-theme metalheart-theme oceanic-theme kooten-theme sourcerer-theme liso-theme twilight-anti-bright-theme darkmine-theme caroline-theme toxi-theme idea-darkula-theme dark-mint-theme distinguished-theme hamburg-theme borland-blue-theme ubuntu-theme hc-zenburn-theme cherry-blossom-theme green-phosphor-theme heroku-theme reverse-theme waher-theme badger-theme purple-haze-theme bubbleberry-theme soothe-theme hemisu-theme calmer-forest-theme django-theme underwater-theme soft-charcoal-theme twilight-theme birds-of-paradise-plus-theme ir-black-theme zen-and-art-theme tango-2-theme green-screen-theme atom-dark-theme brutalist-theme foggy-night-theme seti-theme panda-theme mandm-theme arc-dark-theme naquadah-theme color-theme suscolors-theme naysayer-theme minsk-theme sweet-theme undersea-theme one-themes night-owl-theme ayu-theme darkokai-theme iceberg-theme color-theme-sanityinc-solarized lavenderless-theme reykjavik-theme atom-one-dark-theme chocolate-theme enlightened-theme mlso-theme avk-emacs-themes nova-theme ## shades-of-purple-theme leuven-theme purp-theme spacemacs-theme zeno-theme immaterial-theme ancient-one-dark-theme zerodark-theme inkpot-theme timu-spacegrey-theme tangotango-theme molokai-theme gotham-theme remember-last-theme darker-themekaolin-theme nimbus-theme gruber-darker-theme deadgrep visual-regexp symon doom-modeline spaceline spaceline-config ergoemacs-status smart-mode-line diminish all-the-icons helm-projectile helm-swoop good-scroll highlight-symbol rainbow-identifiers rainbow-mode rainbow-blocks hl-block-mode hl-block smartparens-config smartparens hl-todo undo-fu multiple-cursors move-text duplicate-thing kaolin-themes afternoon-theme darktooth-theme ample-theme moe-theme rainbow-delimiters material-theme gruvbox-theme monokai-pro-theme zenburn-theme cyberpunk-theme cyberpunk-2019-theme vscode-icon theme-looper dracula-theme peacock-theme subatomic256-theme subatomic-theme nord-theme monokai-theme centaur-tabs company-quickhelp helm-ring helm-info helm-elisp helm-buffers helm-for-files helm-find helm-command startup rg company wakib-keys vterm-toggle use-package sly-asdf magit helm))
  '(pdf-view-midnight-colors '("#fdf4c1" . "#1d2021"))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
@@ -871,7 +871,7 @@ Version 2020-06-26"
   (set-face-background 'show-paren-match "#5218fa")
   (if (boundp 'font-lock-comment-face)
       (set-face-foreground 'show-paren-match
-     			   (face-foreground 'font-lock-comment-face))
+                           (face-foreground 'font-lock-comment-face))
     (set-face-foreground 'show-paren-match
                          (face-foreground 'default)))
   (set-face-attribute 'show-paren-match nil :weight 'extra-bold))
@@ -896,12 +896,27 @@ Version 2020-06-26"
 (global-set-key (kbd "M-)")           'sp-forward-slurp-sexp)
 (global-set-key (kbd "M-{")           'sp-backward-barf-sexp)
 (global-set-key (kbd "M-}")           'sp-forward-barf-sexp)
+
 ;; (global-set-key (kbd "C-?") 'sp-backward-sexp)
 ;; (global-set-key (kbd "C-¿") 'sp-forward-sexp)
 ;; (global-set-key (kbd "C-{") 'sp-forward-barf-sexp)
 ;; (global-set-key (kbd "C-}") 'sp-forward-slurp-sexp)
 
-;; Undo-fu Redo
+;; Parinfer
+(use-package parinfer-rust-mode
+  :ensure t
+  :init (setq parinfer-rust-auto-download t))
+;; :config
+;; (add-hook 'emacs-lisp-mode 'parinfer-rust-mode)
+;; (add-hook 'common-lisp-mode 'parinfer-rust-mode)
+;; (add-hook 'lisp-mode 'parinfer-rust-mode))
+(add-hook 'lisp-mode-hook 'parinfer-rust-mode)
+
+;; Tab Jump out
+(use-package tab-jump-out :ensure t)
+(add-hook 'lisp-mode-hook 'tab-jump-out-mode)
+
+;; Undo-fu
 (use-package undo-fu :ensure t)
 (global-set-key (kbd "C-z")      'undo-fu-only-undo)
 (global-set-key (kbd "C-S-z")    'undo-fu-only-redo)
@@ -958,16 +973,16 @@ Version 2020-06-26"
   ;;   (set-face-attribute centaur-face nil :family "Consolas Ligaturized" :height 120))
   ;; (centaur-tabs-change-fonts "Consolas Ligaturized" 80)
   (setq centaur-tabs-style "bar"
-	centaur-tabs-set-bar 'over
-	centaur-tabs-height 32
-	centaur-tabs-set-icons t
-	centaur-tabs-set-modified-marker t
+        centaur-tabs-set-bar 'over
+        centaur-tabs-height 32
+        centaur-tabs-set-icons t
+        centaur-tabs-set-modified-marker t
         centaur-tabs-modified-marker "*"
-	centaur-tabs-show-navigation-buttons t
-	x-underline-at-descent-line t
-        ;; centaur-tabs-label-fixed-length 10
-        ;; centaur-tabs--buffer-show-groups nil
-        )
+        centaur-tabs-show-navigation-buttons t
+        x-underline-at-descent-line t)
+  ;; centaur-tabs-label-fixed-length 10
+  ;; centaur-tabs--buffer-show-groups nil
+
   (setq uniquify-separator "/")
   (setq uniquify-buffer-name-style 'forward)
   (centaur-tabs-headline-match)
@@ -1183,8 +1198,8 @@ Version 2020-06-26"
 
 ;; Remember theme
 ;; (use-package remember-last-theme
-  ;; :ensure t
-  ;; :config (remember-last-theme-enable))
+;; :ensure t
+;; :config (remember-last-theme-enable))
 ;; (load custom-file) if you are not doing it already)
 
 ;; (load-theme 'monokai t)
@@ -1436,13 +1451,13 @@ excl:clean-system :mis.management-console)
 (defun helm-sly-mrepl-history()
   (interactive)
   (or (and (fboundp 'helm) (string-equal major-mode "sly-mrepl-mode")
-	   (let* ((helm-source-sly-mrepl
-		   (helm-build-sync-source "sly-mrepl"
-		     :candidates (ring-elements comint-input-ring)
-		     :action '(("Insert" . (lambda (selected) (insert selected)))))))
-	     (helm :sources (list  helm-source-sly-mrepl)
-		   :buffer "*helm sly-mrepl*")
-	     t))
+           (let* ((helm-source-sly-mrepl
+                   (helm-build-sync-source "sly-mrepl"
+                     :candidates (ring-elements comint-input-ring)
+                     :action '(("Insert" . (lambda (selected) (insert selected)))))))
+             (helm :sources (list  helm-source-sly-mrepl)
+                   :buffer "*helm sly-mrepl*")
+             t))
       (message "Buffer major mode not valid")))
 (define-key sly-mrepl-mode-map (kbd "C-r") 'helm-sly-mrepl-history)
 
@@ -1543,7 +1558,7 @@ excl:clean-system :mis.management-console)
 
 ;; Blink diferentes colores
 ;; (defvar blink-cursor-colors (list  "#92c48f" "#6785c5" "#be369c" "#d9ca65")
-  ;; "On each blink the cursor will cycle to the next color in this list.")
+;; "On each blink the cursor will cycle to the next color in this list.")
 ;; (setq blink-cursor-count 0)
 ;; (defun blink-cursor-timer-function ()
 ;;   "Zarza wrote this cyberpunk variant of timer `blink-cursor-timer'.
