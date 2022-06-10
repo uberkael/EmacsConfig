@@ -1451,11 +1451,13 @@ excl:clean-system :mis.management-console)
 
 
 ;; Ruler linea 80
-(require 'whitespace)
-(setq whitespace-line-column 90) ;; limit line length
-(setq whitespace-style '(face lines-tail))
+;; (require 'whitespace)
+;; (setq whitespace-line-column 90) ;; limit line length
+;; (setq whitespace-style '(face lines-tail))
+;; (add-hook 'prog-mode-hook 'whitespace-mode)
+;; (global-whitespace-mode)
+(global-whitespace-mode 0)
 
-(add-hook 'prog-mode-hook 'whitespace-mode)
 ;; (add-hook 'window-configuration-change-hook (lambda () (ruler-mode 1)))
 ;; (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
