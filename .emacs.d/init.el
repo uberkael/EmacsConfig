@@ -924,8 +924,12 @@ Version 2020-06-26"
 (add-hook 'lisp-mode-hook 'parinfer-rust-mode)
 
 ;; Tab Jump out
-(use-package tab-jump-out :ensure t)
-(add-hook 'lisp-mode-hook 'tab-jump-out-mode)
+(use-package tab-jump-out :ensure t
+  :config
+  (add-hook 'lisp-mode-hook 'tab-jump-out-mode)
+  (add-hook 'common-lisp-mode-hook 'tab-jump-out-mode)
+  (add-hook 'emacs-lisp-mode-hook 'tab-jump-out-mode)
+  (add-hook 'sly-mrepl-mode-hook 'tab-jump-out-mode))
 
 ;; Undo-fu
 (use-package undo-fu :ensure t)
