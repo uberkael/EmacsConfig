@@ -889,10 +889,13 @@ Version 2020-06-26"
 (lispy-parens)
 
 ;; Smartparent
-(use-package smartparens :ensure t)
+(use-package smartparens :ensure t
+  :config
+  (add-hook 'lisp-mode-hook #'smartparens-mode)
+  (add-hook 'common-lisp-mode-hook #'smartparens-mode)
+  (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
+  (add-hook 'sly-mrepl-mode-hook #'smartparens-mode))
 (require 'smartparens-config)
-(add-hook 'lisp-mode-hook #'smartparens-mode)
-(add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
 (global-set-key (kbd "C-(")           'sp-backward-sexp)
 (global-set-key (kbd "C-)")           'sp-forward-sexp)
 ;; TODO seleccion continua
@@ -916,12 +919,18 @@ Version 2020-06-26"
 ;; Parinfer
 (use-package parinfer-rust-mode
   :ensure t
-  :init (setq parinfer-rust-auto-download t))
+  :init (setq parinfer-rust-auto-download t)
+  :config
+  (add-hook 'lisp-mode-hook #'parinfer-rust-mode)
+  (add-hook 'common-lisp-mode-hook #'parinfer-rust-mode)
+  (add-hook 'emacs-lisp-mode-hook #'parinfer-rust-mode)
+  (add-hook 'sly-mrepl-mode-hook #'parinfer-rust-mode))
+
 ;; :config
 ;; (add-hook 'emacs-lisp-mode 'parinfer-rust-mode)
 ;; (add-hook 'common-lisp-mode 'parinfer-rust-mode)
 ;; (add-hook 'lisp-mode 'parinfer-rust-mode))
-(add-hook 'lisp-mode-hook 'parinfer-rust-mode)
+;; (add-hook 'lisp-mode-hook 'parinfer-rust-mode)
 
 ;; Tab Jump out
 (use-package tab-jump-out :ensure t
@@ -1390,7 +1399,6 @@ Version 2020-06-26"
 
 ;; Parentesis sueltos
 ;; (use-package flylisp :ensure t)
-
 ;; Rainbow Identifiers (variables)
 (use-package rainbow-identifiers :ensure t)
 (add-hook 'prog-mode-hook #'rainbow-identifiers-mode)
