@@ -1327,11 +1327,61 @@ Version 2020-06-26"
 
 
 ;; Rainbow Delimiter (parentesis)
-(use-package rainbow-delimiters :ensure t)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+(use-package rainbow-delimiters :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'sly-mrepl-mode-hook #'rainbow-delimiters-mode))
 
+(defface my-outermost-paren-face
+  '((t (:weight bold :foreground "royal blue")))
+  "Face used for outermost parens.")
+
+;; Modificaciones de colores
+(require 'cl-lib)
+(require 'color)
+(cl-loop
+ for index from 1 to rainbow-delimiters-max-face-count
+ do
+ (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+   (cl-callf color-saturate-name (face-foreground face) 60)
+   (if (= index 1)
+       (set-face-attribute face nil
+                       :foreground 'unspecified
+                       :inherit 'my-outermost-paren-face))))
+
+;; Stronger Colors
+;; (require 'cl-lib)
+;; (require 'color)
+;; (cl-loop
+;;  for index from 1 to rainbow-delimiters-max-face-count
+;;  do
+;;  (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+;;    (cl-callf color-saturate-name (face-foreground face) 30)))
+
+;; Dos colores
+;; (require 'cl-lib)
+
+;; (defvar my-paren-dual-colors
+;;   '("deep pink" "royal blue"))
+;;   ;; '("hot pink" "dodger blue"))
+
+;; (cl-loop
+;;  for index from 1 to rainbow-delimiters-max-face-count
+;;  do
+;;  (set-face-foreground
+;;   (intern (format "rainbow-delimiters-depth-%d-face" index))
+;;   (elt my-paren-dual-colors
+;;        (if (cl-evenp index) 0 1))))
+
+;; Stronger
+(defun rainbow-delimiters-using-stronger-colors ()
+  (interactive)
+  (cl-loop
+   for index from 1 to rainbow-delimiters-max-face-count
+   do
+   (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+     (cl-callf color-saturate-name (face-foreground face) 100))))
 
 ;; (require 'paren)
 ;; (set-face-background 'show-paren-match (face-background 'default))
