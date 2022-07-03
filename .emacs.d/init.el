@@ -39,7 +39,6 @@
 
 ;; Remove cl warnings
 (setq byte-compile-warnings '(cl-functions))
-
 ;; Make case insensitive search
 (setq case-fold-search t)
 
@@ -359,7 +358,18 @@ Version 2020-06-26"
                                        ((string-equal system-type "windows-nt")
                                         '((sbcl ("sbcl"))))
                                        ((string-equal system-type "darwin")
-                                        '((sbcl ("sbcl")))))
+                                        '((sbcl    ("sbcl")
+                                                   :coding-system utf-8-unix)
+                                          (clozure ("ccl64")
+                                                   :coding-system utf-8-unix)
+                                          (clisp   ("clisp")
+                                                   :coding-system utf-8-unix)
+                                          (ecl     ("ecl")
+                                                   :coding-system utf-8-unix)
+                                          (abcl    ("abcl")
+                                                   :coding-system utf-8-unix)
+                                          (clasp   ("clasp")
+                                                   :coding-system utf-8-unix))))
         sly-auto-select-connection 'always
         sly-command-switch-to-existing-lisp 'always))
 
