@@ -668,9 +668,6 @@ Version 2020-06-26"
 (setq require-final-newline t)
 (setq-default require-final-newline t)
 (customize-set-variable 'require-final-newline t)
-;; (add-hook 'before-save-hook (lambda () (setq-local require-final-newline t)))
-;; (add-hook 'lisp-mode (lambda () (setq-local require-final-newline t)))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
