@@ -519,12 +519,12 @@ Version 2020-06-26"
 (bind-key "<C-f2>" 'sly-connect)
 
 ;; Make sure that the bash executable can be found
-(cond
- ((string-equal system-type "windows-nt")
-  (progn
-    (setq explicit-shell-file-name "C:/portable/cygwin/bin/zsh.exe  --login")
-    (setq shell-file-name explicit-shell-file-name)
-    (add-to-list 'exec-path "C:/portable/cygwin/bin"))))
+;;(cond
+;; ((string-equal system-type "windows-nt")
+;;  (progn
+;;    (setq explicit-shell-file-name "C:\\portable\\cygwin\\bin\\zsh.exe  --login")
+;;    (setq shell-file-name explicit-shell-file-name)
+;;    (add-to-list 'exec-path "C:\\portable\\cygwin\\bin"))))
 
 ;; Tramp
 ;; (require 'tramp)
