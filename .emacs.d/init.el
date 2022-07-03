@@ -1678,8 +1678,15 @@ excl:clean-system :mis.management-console)
 (setq evil-replace-state-cursor '("red" box))
 (setq evil-operator-state-cursor '("yellow" box))
 
-;; (set-face-attribute 'bold nil :font "Consolas Ligaturized" :height 160)
-;; (set-frame-font "Consolas Ligaturized" nil t)
+;; Set Environment
+(setenv "RP_REPOS"        "/home/kael/git")
+(setenv "PATH"            ".:/home/kael/bin:/home/kael/.local/bin:/usr/local/bin:/opt/X11/bin:/usr/local/sbin:/opt/pyenv/plugins/pyenv-virtualenv/shims:/home/kael/.pyenv/shims:/home/kael/.pyenv/bin:/home/kael/.zinit/plugins/BurntSushi---ripgrep:/home/kael/.zinit/plugins/sharkdp---fd:/home/kael/.zinit/plugins/bootandy---dust:/home/kael/.zinit/plugins/dandavison---delta:/home/kael/.zinit/plugins/sharkdp---bat:/home/kael/.zinit/polaris/bin:/home/kael/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/home/kael/.dotnet/tools:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/opt/acl10.1-smp.64")
+(setenv "ACL_LOCALE"      "C.latin1")
+(setenv "NLS_LANG"        "AMERICAN.WE8ISO8859P1")
+(setenv "ORACLE_HOME"     "/opt/oracle/product/11.2.0.3/client_1/lib")
+(setenv "LD_LIBRARY_PATH" "/opt/oracle/product/11.2.0.3/client_1/lib:/usr/lib/x86_64-linux-gnu")
+(setenv "TNS_ADMIN"       "/home/kael/git/configuration")
+(setenv "IFILE"           "/home/kael/git/configuration/tnsnames.ora")
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
