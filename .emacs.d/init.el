@@ -1054,6 +1054,12 @@ Version 2020-06-26"
        "OrgMode")
       (t
        (centaur-tabs-get-group-name (current-buffer))))))
+  (when (string-equal system-type "windows-nt")
+  ;; → ⇒ ↦
+  ;; (setq centaur-tabs-forward-tab-text " \u21D2 ")
+  ;; (setq centaur-tabs-backward-tab-text " \u21D0 ")
+  (setq centaur-tabs-forward-tab-text  " \u21E8 ")
+  (setq centaur-tabs-backward-tab-text " \u21E6 "))
   ;;:hook
   ;; (dashboard-mode . centaur-tabs-local-mode)
   ;; (term-mode . centaur-tabs-local-mode)
