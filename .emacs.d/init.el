@@ -1324,7 +1324,7 @@ Version 2020-06-26"
 ;; Numero de lineas TODO diferencia
 ;; (linum-mode)
 ;; (global-display-line-numbers-mode)
-(column-number-mode)
+;; (column-number-mode)
 
 ;; Highlight busqueda
 (setq lazy-highlight-cleanup nil)
@@ -1524,7 +1524,7 @@ excl:clean-system :mis.management-console)
                 :username "kael")))
 
 ;; Relative line numbers
-(setq display-line-numbers-type 'relative)
+;; (setq display-line-numbers-type 'relative)
 
 ;; Ruler linea 80
 ;; (require 'whitespace)
