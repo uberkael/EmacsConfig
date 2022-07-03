@@ -791,6 +791,7 @@ Version 2020-06-26"
  '(powerline-color1 "#1E1E1E")
  '(powerline-color2 "#111111")
  '(red "#ffffff")
+ '(require-final-newline t)
  '(safe-local-variable-values
    '((Package . POSTMODERN)
      (Base . 10)
@@ -846,6 +847,7 @@ Version 2020-06-26"
  '(xterm-color-names-bright
    ["#555B77" "#E074DB" "#8BE8D8" "#B2DEC1" "#75B5EB" "#9198EB" "#C3C3E8" "#838791"])
  '(xterm-mouse-mode t))
+
 
 ;; Clipboard comun
 (setq x-select-enable-clipboard t)
@@ -931,10 +933,10 @@ Version 2020-06-26"
   :ensure t
   :init (setq parinfer-rust-auto-download t)
   :config
+  ;; (add-hook 'sly-mrepl-mode-hook #'parinfer-rust-mode)
   (add-hook 'lisp-mode-hook #'parinfer-rust-mode)
   (add-hook 'common-lisp-mode-hook #'parinfer-rust-mode)
-  (add-hook 'emacs-lisp-mode-hook #'parinfer-rust-mode)
-  (add-hook 'sly-mrepl-mode-hook #'parinfer-rust-mode))
+  (add-hook 'emacs-lisp-mode-hook #'parinfer-rust-mode))
 
 ;; :config
 ;; (add-hook 'emacs-lisp-mode 'parinfer-rust-mode)
@@ -1005,7 +1007,8 @@ Version 2020-06-26"
   ;;                           centaur-tabs-unselected
   ;;                           centaur-tabs-unselected-modified))
   ;;   (set-face-attribute centaur-face nil :family "Consolas Ligaturized" :height 120))
-  ;; (centaur-tabs-change-fonts "Consolas Ligaturized" 80)
+  ;; (centaur-tabs-change-fonts "Consolas Ligaturized" 180)
+  ;; (centaur-tabs-change-fonts "DejaVu Sans Mono" 180)
   (setq centaur-tabs-style "bar"
         centaur-tabs-set-bar 'over
         centaur-tabs-height 32
@@ -1016,7 +1019,6 @@ Version 2020-06-26"
         x-underline-at-descent-line t)
   ;; centaur-tabs-label-fixed-length 10
   ;; centaur-tabs--buffer-show-groups nil
-
   (setq uniquify-separator "/")
   (setq uniquify-buffer-name-style 'forward)
   (centaur-tabs-headline-match)
