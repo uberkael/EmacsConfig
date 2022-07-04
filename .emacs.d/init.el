@@ -784,7 +784,7 @@ Version 2020-06-26"
  '(org-fontify-done-headline nil)
  '(org-fontify-todo-headline nil)
  '(package-selected-packages
-   '(slime-theme tab-jump-out parinfer-rust-mode doom-themes visual-regexp-steroids acme-search evil which-key helm-sly lush-theme rimero-theme rebecca-theme northcode-theme seoul256-theme paganini-theme ujelly-theme darcula-theme flatland-theme nyx-theme mustard-theme flatland-black-theme abyss-theme snazzy-theme mbo70s-theme mellow-theme colonoscopy-theme firecode-theme mustang-theme busybee-theme dakrone-theme dark-krystal-theme bliss-theme boron-theme monokai-alt-theme sublime-themes arjen-grey-theme flatui-dark-theme blackboard-theme zweilight-theme kosmos-theme darkburn-theme creamsody-theme clues-theme madhat2r-theme noctilux-theme omtose-phellack-theme warm-night-theme farmhouse-theme badwolf-theme forest-blue-theme metalheart-theme oceanic-theme kooten-theme sourcerer-theme liso-theme twilight-anti-bright-theme darkmine-theme caroline-theme toxi-theme idea-darkula-theme dark-mint-theme distinguished-theme hamburg-theme borland-blue-theme ubuntu-theme hc-zenburn-theme cherry-blossom-theme green-phosphor-theme heroku-theme reverse-theme waher-theme badger-theme purple-haze-theme bubbleberry-theme soothe-theme hemisu-theme calmer-forest-theme django-theme underwater-theme soft-charcoal-theme twilight-theme birds-of-paradise-plus-theme ir-black-theme zen-and-art-theme tango-2-theme green-screen-theme atom-dark-theme brutalist-theme foggy-night-theme seti-theme panda-theme mandm-theme arc-dark-theme naquadah-theme color-theme suscolors-theme naysayer-theme minsk-theme sweet-theme undersea-theme one-themes night-owl-theme ayu-theme darkokai-theme iceberg-theme color-theme-sanityinc-solarized lavenderless-theme reykjavik-theme atom-one-dark-theme chocolate-theme enlightened-theme mlso-theme avk-emacs-themes nova-theme ## shades-of-purple-theme leuven-theme purp-theme spacemacs-theme zeno-theme immaterial-theme ancient-one-dark-theme zerodark-theme inkpot-theme timu-spacegrey-theme tangotango-theme molokai-theme gotham-theme remember-last-theme darker-themekaolin-theme nimbus-theme gruber-darker-theme deadgrep visual-regexp symon doom-modeline spaceline spaceline-config ergoemacs-status smart-mode-line diminish all-the-icons helm-projectile helm-swoop good-scroll highlight-symbol rainbow-identifiers rainbow-mode rainbow-blocks hl-block-mode hl-block smartparens-config smartparens hl-todo undo-fu multiple-cursors move-text duplicate-thing kaolin-themes afternoon-theme darktooth-theme ample-theme moe-theme rainbow-delimiters material-theme gruvbox-theme monokai-pro-theme zenburn-theme cyberpunk-theme cyberpunk-2019-theme vscode-icon theme-looper dracula-theme peacock-theme subatomic256-theme subatomic-theme nord-theme monokai-theme centaur-tabs company-quickhelp helm-ring helm-info helm-elisp helm-buffers helm-for-files helm-find helm-command startup rg company wakib-keys vterm-toggle use-package sly-asdf magit helm))
+   '(emojify ace-mc slime-theme tab-jump-out parinfer-rust-mode doom-themes visual-regexp-steroids acme-search evil which-key helm-sly lush-theme rimero-theme rebecca-theme northcode-theme seoul256-theme paganini-theme ujelly-theme darcula-theme flatland-theme nyx-theme mustard-theme flatland-black-theme abyss-theme snazzy-theme mbo70s-theme mellow-theme colonoscopy-theme firecode-theme mustang-theme busybee-theme dakrone-theme dark-krystal-theme bliss-theme boron-theme monokai-alt-theme sublime-themes arjen-grey-theme flatui-dark-theme blackboard-theme zweilight-theme kosmos-theme darkburn-theme creamsody-theme clues-theme madhat2r-theme noctilux-theme omtose-phellack-theme warm-night-theme farmhouse-theme badwolf-theme forest-blue-theme metalheart-theme oceanic-theme kooten-theme sourcerer-theme liso-theme twilight-anti-bright-theme darkmine-theme caroline-theme toxi-theme idea-darkula-theme dark-mint-theme distinguished-theme hamburg-theme borland-blue-theme ubuntu-theme hc-zenburn-theme cherry-blossom-theme green-phosphor-theme heroku-theme reverse-theme waher-theme badger-theme purple-haze-theme bubbleberry-theme soothe-theme hemisu-theme calmer-forest-theme django-theme underwater-theme soft-charcoal-theme twilight-theme birds-of-paradise-plus-theme ir-black-theme zen-and-art-theme tango-2-theme green-screen-theme atom-dark-theme brutalist-theme foggy-night-theme seti-theme panda-theme mandm-theme arc-dark-theme naquadah-theme color-theme suscolors-theme naysayer-theme minsk-theme sweet-theme undersea-theme one-themes night-owl-theme ayu-theme darkokai-theme iceberg-theme color-theme-sanityinc-solarized lavenderless-theme reykjavik-theme atom-one-dark-theme chocolate-theme enlightened-theme mlso-theme avk-emacs-themes nova-theme ## shades-of-purple-theme leuven-theme purp-theme spacemacs-theme zeno-theme immaterial-theme ancient-one-dark-theme zerodark-theme inkpot-theme timu-spacegrey-theme tangotango-theme molokai-theme gotham-theme remember-last-theme darker-themekaolin-theme nimbus-theme gruber-darker-theme deadgrep visual-regexp symon doom-modeline spaceline spaceline-config ergoemacs-status smart-mode-line diminish all-the-icons helm-projectile helm-swoop good-scroll highlight-symbol rainbow-identifiers rainbow-mode rainbow-blocks hl-block-mode hl-block smartparens-config smartparens hl-todo undo-fu multiple-cursors move-text duplicate-thing kaolin-themes afternoon-theme darktooth-theme ample-theme moe-theme rainbow-delimiters material-theme gruvbox-theme monokai-pro-theme zenburn-theme cyberpunk-theme cyberpunk-2019-theme vscode-icon theme-looper dracula-theme peacock-theme subatomic256-theme subatomic-theme nord-theme monokai-theme centaur-tabs company-quickhelp helm-ring helm-info helm-elisp helm-buffers helm-for-files helm-find helm-command startup rg company wakib-keys vterm-toggle use-package sly-asdf magit helm))
  '(pdf-view-midnight-colors '("#fdf4c1" . "#1d2021"))
  '(pos-tip-background-color "#0b0b0b")
  '(pos-tip-foreground-color "#8b8b8b")
@@ -1667,6 +1667,28 @@ excl:clean-system :mis.management-console)
 ;;     (setq blink-cursor-count (+ 1 blink-cursor-count))
 ;;     )
 ;;   (internal-show-cursor nil (not (internal-show-cursor-p))))
+
+;; Emojis
+(use-package emojify
+  :ensure t
+  :hook (after-init . global-emojify-mode)
+  :config
+  (when (member "Segoe UI Emoji" (font-family-list))
+    (set-fontset-font
+     t 'symbol (font-spec :family "Segoe UI Emoji") nil 'prepend))
+  (bind-key "C-:" #'emojify-insert-emoji))
+
+;; (use-package emojify
+;;   :ensure t
+;;   :hook (after-init . global-emojify-mode)
+;;   :config
+;;   (when (member "Segoe UI Emoji" (font-family-list))
+;;     (set-fontset-font
+;;      t 'symbol (font-spec :family "Segoe UI Emoji") nil 'prepend))
+;;   (setq emojify-display-style 'unicode)
+;;   (setq emojify-emoji-styles '(unicode))
+;;   (bind-key* (kbd "C-:") #'emojify-insert-emoji)) ; override binding in any
+;; (add-hook 'after-init-hook #'global-emojify-mode)
 
 ;; Caret cursor
 ;; (setq cursor-type '(bar . 5))
