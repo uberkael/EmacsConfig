@@ -4,6 +4,8 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (unless package--initialized (package-initialize))
 
+;; (setq package-check-signature nil)
+
 (setq auto-save-default nil
       create-lockfiles nil
       delete-old-versions -1
@@ -320,6 +322,7 @@ Version 2020-06-26"
 
 ;;; SLY
 (setq sly-init-function 'sly-init-using-slynk-loader)
+(add-to-list 'load-path "C:/Portable/cygwin/home/kael/git/sly")
 (add-to-list 'load-path "~/git/sly")
 ;; (require 'sly-autoloads)
 ;; (use-package sly
@@ -1237,9 +1240,9 @@ Version 2020-06-26"
 
 
 ;;Remember theme
-(use-package remember-last-theme)
+(use-package remember-last-theme
 :ensure t
-:config (remember-last-theme-enable)
+:config (remember-last-theme-enable))
 ;; (load custom-file) if you are not doing it already)
 
 ;; (load-theme 'monokai t)
