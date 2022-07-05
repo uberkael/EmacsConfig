@@ -1094,9 +1094,10 @@ Version 2020-06-26"
   :ensure t
   :config
   (kaolin-treemacs-theme))
+
 (use-package abyss-theme :ensure t) ;;
-(use-package afternoon-theme :ensure t)
-(use-package ample-theme :ensure t)
+(use-package afternoon-theme :ensure t) ;; fav
+(use-package ample-theme :ensure t) ;; fav
 (use-package ancient-one-dark-theme :ensure t)
 (use-package arc-dark-theme :ensure t)
 (use-package arjen-grey-theme :ensure t)
@@ -1122,8 +1123,8 @@ Version 2020-06-26"
 (use-package colonoscopy-theme :ensure t)
 (use-package color-theme-sanityinc-solarized :ensure t)
 (use-package creamsody-theme :ensure t)
-(use-package cyberpunk-2019-theme :ensure t)
-(use-package cyberpunk-theme :ensure t)
+(use-package cyberpunk-2019-theme :ensure t) ;; fav
+(use-package cyberpunk-theme :ensure t) ;; fav
 (use-package dakrone-theme :ensure t)
 (use-package darcula-theme :ensure t) ;;
 (use-package dark-krystal-theme :ensure t)
@@ -1131,10 +1132,10 @@ Version 2020-06-26"
 (use-package darkburn-theme :ensure t)
 (use-package darkmine-theme :ensure t)
 (use-package darkokai-theme :ensure t)
-(use-package darktooth-theme :ensure t)
+(use-package darktooth-theme :ensure t) ;; fav
 (use-package distinguished-theme :ensure t)
 (use-package django-theme :ensure t)
-(use-package dracula-theme :ensure t)
+(use-package dracula-theme :ensure t) ;; fav
 (use-package enlightened-theme :ensure t)
 (use-package firecode-theme :ensure t)
 (use-package flatland-black-theme :ensure t) ;;
@@ -1146,7 +1147,7 @@ Version 2020-06-26"
 (use-package green-phosphor-theme :ensure t)
 (use-package green-screen-theme :ensure t)
 (use-package gruber-darker-theme :ensure t)
-(use-package gruvbox-theme :ensure t)
+(use-package gruvbox-theme :ensure t) ;; fav
 (use-package hamburg-theme :ensure t)
 (use-package hc-zenburn-theme :ensure t)
 (use-package hemisu-theme :ensure t)
@@ -1164,16 +1165,16 @@ Version 2020-06-26"
 (use-package lush-theme :ensure t) ;;
 (use-package madhat2r-theme :ensure t) ;;
 (use-package mandm-theme :ensure t)
-(use-package material-theme :ensure t)
+(use-package material-theme :ensure t) ;; fav
 (use-package mbo70s-theme :ensure t) ;;
 (use-package mellow-theme :ensure t) ;;
 (use-package metalheart-theme :ensure t)
 (use-package minsk-theme :ensure t)
-(use-package moe-theme :ensure t)
+(use-package moe-theme :ensure t) ;; fav
 (use-package molokai-theme :ensure t)
 (use-package monokai-alt-theme :ensure t) ;;
-(use-package monokai-pro-theme :ensure t)
-(use-package monokai-theme :ensure t)
+(use-package monokai-pro-theme :ensure t) ;; fav
+(use-package monokai-theme :ensure t) ;; fav
 (use-package mustang-theme :ensure t) ;;
 (use-package mustard-theme :ensure t) ;;
 (use-package naquadah-theme :ensure t)
@@ -1181,7 +1182,7 @@ Version 2020-06-26"
 (use-package night-owl-theme :ensure t)
 (use-package nimbus-theme :ensure t)
 (use-package noctilux-theme :ensure t)
-(use-package nord-theme :ensure t)
+(use-package nord-theme :ensure t) ;; fav
 (use-package northcode-theme :ensure t)
 (use-package nova-theme :ensure t)
 (use-package nyx-theme :ensure t)
@@ -1189,8 +1190,7 @@ Version 2020-06-26"
 (use-package one-themes :ensure t)
 (use-package paganini-theme :ensure t) ;;
 (use-package panda-theme :ensure t)
-(use-package peacock-theme :ensure t)
-(use-package peacock-theme :ensure t) ;;
+(use-package peacock-theme :ensure t) ;; fav
 (use-package purp-theme :ensure t)
 (use-package purple-haze-theme :ensure t)
 (use-package rebecca-theme :ensure t) ;;
@@ -1205,8 +1205,8 @@ Version 2020-06-26"
 (use-package soft-charcoal-theme :ensure t)
 (use-package soothe-theme :ensure t)
 (use-package sourcerer-theme :ensure t)
-(use-package subatomic-theme :ensure t)
-(use-package subatomic256-theme :ensure t)
+(use-package subatomic-theme :ensure t) ;; fav
+(use-package subatomic256-theme :ensure t) ;; fav
 (use-package suscolors-theme :ensure t)
 (use-package sweet-theme :ensure t)
 (use-package tango-2-theme :ensure t)
@@ -1222,10 +1222,11 @@ Version 2020-06-26"
 (use-package waher-theme :ensure t)
 (use-package warm-night-theme :ensure t)
 (use-package zen-and-art-theme :ensure t)
-(use-package zenburn-theme :ensure t)
+(use-package zenburn-theme :ensure t) ;; fav
 (use-package zeno-theme :ensure t)
 (use-package zerodark-theme :ensure t)
 (use-package zweilight-theme :ensure t)
+
 (use-package doom-themes
   :ensure t
   :config
@@ -1250,39 +1251,6 @@ Version 2020-06-26"
  :config (remember-last-theme-enable))
 ;; (load custom-file) if you are not doing it already)
 
-;; (load-theme 'monokai t)
-;; (load-theme 'monokai-pro t)
-;; (load-theme 'nord t)
-;; (load-theme 'subatomic t)
-;; (load-theme 'subatomic256 t)
-;; (load-theme 'peacock t)
-;; (load-theme 'dracula t)
-;; (load-theme 'cyberpunk t)
-;; (load-theme 'cyberpunk-2019 t)
-;; (load-theme 'zenburn t)
-;; (load-theme 'material t)
-;; (load-theme 'melancholy t)
-;; (load-theme 'moe-dark t)
-;; (load-theme 'ample t)
-;; (load-theme 'darktooth t)
-;; (load-theme 'afternoon t)
-;; (load-theme 'kaolin-aurora t)
-;; (load-theme 'kaolin-bubblegum t)
-;; (load-theme 'kaolin-eclipse t)
-;; (load-theme 'kaolin-ocean t)
-;; (load-theme 'kaolin-temple t)
-;; (load-theme 'kaolin-eclipse t)
-;; (load-theme 'kaolin-valley-dark t)
-;; (load-theme 'gruvbox-dark-medium t)
-;; (load-theme 'gruvbox-dark-hard t)
-;;(load-theme 'gruvbox t)
-
-;; (load-theme 'deeper-blue t)
-;; (load-theme 'misterioso t)
-;; (load-theme 'tango-dark t)
-;; (load-theme 'tsdh-dark t)
-;; (load-theme 'wheatgrass t)
-;; (load-theme 'wombat t)
 
 ;; Quita toolbar
 (tool-bar-mode -1)
