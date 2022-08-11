@@ -1335,7 +1335,8 @@ Version 2020-06-26"
   :ensure t
   :bind ("C-x g" . magit-status))
 ;; (setq magit-git-executable "git"))
-(bind-key "<f9>" 'magit)
+(bind-key "<f10>" 'magit)
+(bind-key "<S-f10>" 'magit-log-all)
 
 ;; Evita problemas en git con links symbolic
 (setq vc-follow-symlinks t)
@@ -1759,7 +1760,7 @@ Version 2020-06-26"
 ;; Theme looper
 (use-package theme-looper :ensure t
   :config
-  (global-set-key (kbd "M-<f9>")    'theme-looper-select-theme)
+  (global-set-key (kbd "M-<f10>")    'theme-looper-select-theme)
   (global-set-key (kbd "M-<f11>")   'theme-looper-enable-previous-theme)
   (global-set-key (kbd "M-<f12>")   'theme-looper-enable-next-theme))
 
@@ -2059,9 +2060,9 @@ excl:clean-system :mis.management-console)
 (global-set-key (kbd "<M-up>")    'backward-paragraph)
 (global-set-key (kbd "<M-down>")  'forward-paragraph)
 ;; Eval
-(global-set-key (kbd "<f10>")    'eval-buffer)
-(global-set-key (kbd "<S-f10>")  'eval-last-sexp)
-(global-set-key (kbd "<C-f10>")  'describe-variable)
+(global-set-key (kbd "<f9>")    'eval-buffer)
+(global-set-key (kbd "<S-f9>")  'eval-last-sexp)
+(global-set-key (kbd "<C-f9>")  'describe-variable)
 ;; Identacion
 (global-set-key (kbd "<backtab>") 'indent-region)
 ;; Cerrar ventana
