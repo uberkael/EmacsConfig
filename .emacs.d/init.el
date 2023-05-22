@@ -1452,6 +1452,18 @@ Version 2020-06-26"
 (global-unset-key (kbd "M-<down-mouse-1>"))
 (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
 
+;; TODO Ejemplo
+;; (use-package multiple-cursors
+;;   :straight t
+;;   :ensure   t
+;;   :bind (("H-SPC" . set-rectangular-region-anchor)
+;;          ("C-M-SPC" . set-rectangular-region-anchor)
+;;          ("C->" . mc/mark-next-like-this)
+;;          ("C-<" . mc/mark-previous-like-this)
+;;          ("C-c C->" . mc/mark-all-like-this)
+;;          ("C-c C-SPC" . mc/edit-lines)
+;;          ))
+
 ;; Ace-mc
 (use-package ace-mc :ensure t)
 (bind-key "M-d" 'ace-mc-add-multiple-cursors)
@@ -2138,7 +2150,7 @@ excl:clean-system :mis.management-console)
                                    "Segoe UI Emoji"
                                    "Segoe UI Emoji Win11"
                                    "Blobmoji"
-                                   "Noto Emoji" "Symbola" "Quivira" ))))
+                                   "Noto Emoji" "Symbola" "Quivira"))))
     (set-fontset-font t 'emoji fuente)))
 
 
