@@ -442,6 +442,18 @@ Version 2020-06-26"
   (let ((bar (thing-at-point 'symbol)))
     (sly-inspect bar)))
 
+(defun helm-sly-mrepl-history()
+  (interactive)
+  (or (and (fboundp 'helm) (string-equal major-mode "sly-mrepl-mode")
+	   (let* ((helm-source-sly-mrepl
+		   (helm-build-sync-source "sly-mrepl"
+		     :candidates (ring-elements comint-input-ring)
+		     :action '(("Insert" . (lambda (selected) (insert selected)))))))
+	     (helm :sources (list  helm-source-sly-mrepl)
+		   :buffer "*helm sly-mrepl*")
+	     t))
+      (message "Buffer major mode not valid")))
+
 ;; TODO mejor manera
 ;; (sly-stickers-toggle-break-on-stickers)
 ;; TODO click con raton en breaks
